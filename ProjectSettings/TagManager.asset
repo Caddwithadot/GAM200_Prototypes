@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Light
   - Enemy
+  - RespawnCanvas
+  - PauseCanvas
+  - Tilemap
   layers:
   - Default
   - TransparentFX
