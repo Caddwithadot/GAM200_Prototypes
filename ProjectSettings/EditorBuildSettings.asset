@@ -4,17 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-<<<<<<< HEAD
-  - enabled: 0
-    path: Assets/Taylor/MVP_TC.unity
-    guid: 8e606553b2b660448b20c32daf4425cf
-  - enabled: 1
-    path: Assets/Taylor/Test.unity
-    guid: 4049f371cd1a34f40abccdc34493ce92
-=======
-  - enabled: 1
-    path: Assets/Jared/Scenes/Jared_TestLevel 1.unity
-    guid: 2b6780487f08752479f60149c1fcf0a4
->>>>>>> 7e374bb232b2de605a0dcc5244d5856fed98e774
+  m_Scenes: []
   m_configObjects: {}
