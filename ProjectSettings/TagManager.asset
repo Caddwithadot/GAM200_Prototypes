@@ -10,6 +10,7 @@ TagManager:
   - PauseCanvas
   - Tilemap
   - Lamp
+  - TransitionCanvas
   layers:
   - Default
   - TransparentFX
