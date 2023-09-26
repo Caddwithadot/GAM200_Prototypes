@@ -28,6 +28,7 @@ public class RandomlyShow : MonoBehaviour
 
             // Activate the random child and remove it from the list.
             randomChild.gameObject.SetActive(true);
+            randomChild.gameObject.name = buttonPressCount.ToString();
             childList.RemoveAt(randomIndex);
 
             buttonPressCount++;
