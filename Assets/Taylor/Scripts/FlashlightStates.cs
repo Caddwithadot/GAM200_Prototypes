@@ -29,11 +29,16 @@ public class FlashlightStates : MonoBehaviour
     private bool isCooldown = false; // Flag to track cooldown state
     private bool recovering = false;
 
+    public bool useEnergy = true;
+    public bool useHealth = false;
+    private GameObject player;
+
     private void Start()
     {
         initialScale = transform.localScale;
 
         animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -75,7 +80,7 @@ public class FlashlightStates : MonoBehaviour
             // Player is in cooldown, increment the cooldown timer
             cooldownTimer += Time.deltaTime;
 
-            if (cooldownTimer >= overheatCooldown && GetComponent<FlashlightEnergy>().energy >= 1)
+            if (cooldownTimer >= overheatCooldown && GetComponent<FlashlightEnergy>().energy >= 1 && player.GetComponent<PlayerHealth>().health >= 1)
             {
                 // Cooldown period is over, reset flags and timer
                 isCooldown = false;
@@ -192,7 +197,15 @@ public class FlashlightStates : MonoBehaviour
             animator.ResetTrigger("Dying");
             animator.SetTrigger("Disable");
 
-            GetComponent<FlashlightEnergy>().energy--;
+            if (useEnergy)
+            {
+                GetComponent<FlashlightEnergy>().energy--;
+            }
+
+            if (useHealth)
+            {
+                player.GetComponent<PlayerHealth>().health--;
+            }
         }
     }
 }

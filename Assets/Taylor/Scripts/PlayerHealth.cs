@@ -23,6 +23,9 @@ public class PlayerHealth : MonoBehaviour
     private float healTimer = 0f;
     public float healDelay = 2f;
 
+    public bool flashlightRegenerate = false;
+    public bool passiveHealing = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -52,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        if (isHealing && health < 4)
+        if (isHealing && health < 4 || passiveHealing && health < 4)
         {
             healTimer += Time.deltaTime;
 
@@ -82,9 +85,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Enemy") && invTimer <= 0)
+        if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
             health--;
 
@@ -101,19 +104,32 @@ public class PlayerHealth : MonoBehaviour
                 isDead = true;
             }
         }
+    }
 
-        if (other.CompareTag("Aura"))
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Aura") && !passiveHealing)
         {
             isHealing = true;
+
+            if (flashlightRegenerate)
+            {
+                flashLight.GetComponent<FlashlightEnergy>().passiveRegenerate = true;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Aura"))
+        if (collision.CompareTag("Aura") && !passiveHealing)
         {
             isHealing = false;
             healTimer = 0f;
+
+            if (flashlightRegenerate)
+            {
+                flashLight.GetComponent<FlashlightEnergy>().passiveRegenerate = false;
+            }
         }
     }
 }
