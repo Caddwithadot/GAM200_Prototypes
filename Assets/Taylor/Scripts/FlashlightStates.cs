@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class LerpStates : MonoBehaviour
+public class FlashlightStates : MonoBehaviour
 {
     private Vector3 initialScale;
     public Vector3 targetScale;
@@ -38,12 +38,6 @@ public class LerpStates : MonoBehaviour
 
     private void Update()
     {
-        // Flashlight mouse tracking
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector3 direction = new Vector3(worldMousePosition.x, worldMousePosition.y, 0);
-        transform.right = direction - transform.position;
-
         if (!isCooldown)
         {
             if (Input.GetMouseButtonDown(0))
@@ -174,7 +168,7 @@ public class LerpStates : MonoBehaviour
         // Reset the recovering flag
         recovering = false;
 
-        GetComponentInChildren<PolygonCollider2D>().enabled = true;
+        //GetComponentInChildren<PolygonCollider2D>().enabled = true;
     }
 
     private void OverheatLerp()
@@ -199,7 +193,7 @@ public class LerpStates : MonoBehaviour
 
             animator.ResetTrigger("Dying");
             animator.SetTrigger("Disable");
-            GetComponentInChildren<PolygonCollider2D>().enabled = false;
+            //GetComponentInChildren<PolygonCollider2D>().enabled = false;
         }
     }
 }
