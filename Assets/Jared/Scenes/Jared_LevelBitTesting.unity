@@ -61387,6 +61387,7 @@ MonoBehaviour:
   health: 4
   invFrameCooldown: 2
   deathDelay: 0.5
+  healDelay: 2
 --- !u!95 &2818682164038699669
 Animator:
   serializedVersion: 4
