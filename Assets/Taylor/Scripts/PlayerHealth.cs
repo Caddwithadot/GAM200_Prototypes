@@ -8,7 +8,6 @@ public class PlayerHealth : MonoBehaviour
 {
     public GameObject flashLight;
     public GameObject playerAura;
-    private Vector3 initialScale;
 
     public int health = 4;
     private Animator animator;
@@ -20,9 +19,12 @@ public class PlayerHealth : MonoBehaviour
     public float deathDelay = 1f;
     private bool isDead = false;
 
+    private bool isHealing = false;
+    private float healTimer = 0f;
+    public float healDelay = 2f;
+
     private void Start()
     {
-        initialScale = playerAura.transform.localScale;
         animator = GetComponent<Animator>();
     }
 
@@ -49,6 +51,35 @@ public class PlayerHealth : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+
+        if (isHealing && health < 4)
+        {
+            healTimer += Time.deltaTime;
+
+            if (healTimer >= healDelay)
+            {
+                health++;
+
+                healTimer = 0f;
+            }
+        }
+
+        if (health == 4)
+        {
+            playerAura.transform.localScale = new Vector3(15, 15, 1);
+        }
+        else if (health == 3)
+        {
+            playerAura.transform.localScale = new Vector3(12, 12, 1);
+        }
+        else if (health == 2)
+        {
+            playerAura.transform.localScale = new Vector3(9, 9, 1);
+        }
+        else if (health == 1)
+        {
+            playerAura.transform.localScale = new Vector3(4.5f, 4.5f, 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -69,21 +100,20 @@ public class PlayerHealth : MonoBehaviour
                 Time.timeScale = 0.25f;
                 isDead = true;
             }
-            else
-            {
-                if(health == 3)
-                {
-                    playerAura.transform.localScale = new Vector3(12, 12, 1);
-                }
-                else if(health == 2)
-                {
-                    playerAura.transform.localScale = new Vector3(9, 9, 1);
-                }
-                else
-                {
-                    playerAura.transform.localScale = new Vector3(4.5f, 4.5f, 1);
-                }
-            }
+        }
+
+        if (other.CompareTag("Aura"))
+        {
+            isHealing = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Aura"))
+        {
+            isHealing = false;
+            healTimer = 0f;
         }
     }
 }

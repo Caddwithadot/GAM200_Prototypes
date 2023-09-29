@@ -75,7 +75,7 @@ public class FlashlightStates : MonoBehaviour
             // Player is in cooldown, increment the cooldown timer
             cooldownTimer += Time.deltaTime;
 
-            if (cooldownTimer >= overheatCooldown)
+            if (cooldownTimer >= overheatCooldown && GetComponent<FlashlightEnergy>().energy >= 1)
             {
                 // Cooldown period is over, reset flags and timer
                 isCooldown = false;
@@ -167,8 +167,6 @@ public class FlashlightStates : MonoBehaviour
 
         // Reset the recovering flag
         recovering = false;
-
-        //GetComponentInChildren<PolygonCollider2D>().enabled = true;
     }
 
     private void OverheatLerp()
@@ -193,7 +191,8 @@ public class FlashlightStates : MonoBehaviour
 
             animator.ResetTrigger("Dying");
             animator.SetTrigger("Disable");
-            //GetComponentInChildren<PolygonCollider2D>().enabled = false;
+
+            GetComponent<FlashlightEnergy>().energy--;
         }
     }
 }
