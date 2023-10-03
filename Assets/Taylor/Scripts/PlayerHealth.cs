@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
     public int health = 4;
     private Animator animator;
+    private SpriteRenderer sr;
 
     private float invTimer = 0f;
     public float invFrameCooldown = 3f;
@@ -29,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -69,19 +71,23 @@ public class PlayerHealth : MonoBehaviour
 
         if (health == 4)
         {
-            playerAura.transform.localScale = new Vector3(15, 15, 1);
+            playerAura.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            sr.color = new Color(1, 1, 1);
         }
         else if (health == 3)
         {
-            playerAura.transform.localScale = new Vector3(12, 12, 1);
+            playerAura.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+            sr.color = new Color(0.8f, 0.8f, 0.8f);
         }
         else if (health == 2)
         {
-            playerAura.transform.localScale = new Vector3(9, 9, 1);
+            playerAura.transform.localScale = new Vector3(.9f, .9f, 1);
+            sr.color = new Color(0.6f, 0.6f, 0.6f);
         }
         else if (health == 1)
         {
-            playerAura.transform.localScale = new Vector3(4.5f, 4.5f, 1);
+            playerAura.transform.localScale = new Vector3(.45f, .45f, 1);
+            sr.color = new Color(0.2f, 0.2f, 0.2f);
         }
     }
 
@@ -89,20 +95,26 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
-            health--;
+            TakeDamage(1);
+        }
+    }
 
-            invTimer = invFrameCooldown;
+    public void TakeDamage(int lostHealth)
+    {
+        health -= lostHealth;
 
-            if (health <= 0)
-            {
-                playerAura.transform.localScale = Vector3.zero;
+        invTimer = invFrameCooldown;
 
-                GetComponent<ScriptMachine>().enabled = false;
-                GetComponent<SpriteRenderer>().enabled = false;
-                flashLight.gameObject.SetActive(false);
-                Time.timeScale = 0.25f;
-                isDead = true;
-            }
+        if (health <= 0)
+        {
+            playerAura.transform.localScale = Vector3.zero;
+            sr.color = new Color(0, 0, 0);
+
+            GetComponent<ScriptMachine>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            flashLight.gameObject.SetActive(false);
+            Time.timeScale = 0.25f;
+            isDead = true;
         }
     }
 
