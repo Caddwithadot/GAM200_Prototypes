@@ -10,9 +10,9 @@ public class PlayerMovementNEW : MonoBehaviour
     public float jumpForce = 9f;
 
     private bool isGrounded;
-    public float coyoteTime = 0.1f;
+    public float coyoteTime = 0.5f;
     private float coyoteTimer = 0f;
-    public float juffTime = 0.1f;
+    public float juffTime = 0.15f;
     private float juffTimer = 0f;
 
     private AudioSource audioSource;
