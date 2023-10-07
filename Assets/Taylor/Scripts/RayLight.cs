@@ -13,6 +13,8 @@ public class RayLight : MonoBehaviour
     private Vector3 origin;
     private float startingAngle;
 
+    private bool stopKilling = false;
+
     void Start()
     {
         mesh = new Mesh();
@@ -48,6 +50,22 @@ public class RayLight : MonoBehaviour
             else
             {
                 vertex = raycastHit2D.point;
+
+                //
+                if(raycastHit2D.collider.tag == "Enemy" && mouseControls.kill)
+                {
+                    raycastHit2D.collider.GetComponentInChildren<EnemyFill>().StartFilling();
+                    stopKilling = true;
+                }
+                else if (raycastHit2D.collider.tag != "Enemy")
+                {
+                    if (stopKilling)
+                    {
+                        mouseControls.checkEnemies = true;
+                        mouseControls.EnemyCheck();
+                        stopKilling = false;
+                    }
+                }
             }
             vertices[vertexIndex] = vertex;
 

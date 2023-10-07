@@ -91,14 +91,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
-        {
-            TakeDamage(1);
-        }
-    }
-
     public void TakeDamage(int lostHealth)
     {
         health -= lostHealth;
@@ -110,17 +102,14 @@ public class PlayerHealth : MonoBehaviour
             playerAura.transform.localScale = Vector3.zero;
             sr.color = new Color(0, 0, 0);
 
-            GetComponent<ScriptMachine>().enabled = false;
-            GetComponent<SpriteRenderer>().enabled = false;
-            flashLight.gameObject.SetActive(false);
             Time.timeScale = 0.25f;
             isDead = true;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Aura") && !passiveHealing)
+        if (collision.CompareTag("Aura") && !passiveHealing)
         {
             isHealing = true;
 
@@ -128,6 +117,19 @@ public class PlayerHealth : MonoBehaviour
             {
                 flashLight.GetComponent<FlashlightEnergy>().passiveRegenerate = true;
             }
+        }
+
+        if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
+        {
+            TakeDamage(1);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
+        {
+            TakeDamage(1);
         }
     }
 
