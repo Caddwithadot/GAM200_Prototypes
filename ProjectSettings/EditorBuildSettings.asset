@@ -5,10 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Jared/Scenes/Jared_LevelBitTesting.unity
-    guid: a53b14b077f57bb46b6f818bbb9c92a0
   - enabled: 1
-    path: Assets/Taylor/Players.unity
-    guid: 54c8f9f9d7171dc4ebd950632ee757be
+    path: Assets/Jared/Scenes/Jared_MainMenu.unity
+    guid: 45cb02bec46d501419c18b3170c8adc4
   m_configObjects: {}
