@@ -65,6 +65,11 @@ public class RayLight : MonoBehaviour
                         mouseControls.EnemyCheck();
                         stopKilling = false;
                     }
+
+                    if(raycastHit2D.collider.tag == "Lamp" && mouseControls.kill)
+                    {
+                        raycastHit2D.collider.GetComponent<Lamp>().TurnOn();
+                    }
                 }
             }
             vertices[vertexIndex] = vertex;

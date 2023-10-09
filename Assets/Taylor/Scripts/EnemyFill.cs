@@ -70,11 +70,15 @@ public class EnemyFill : MonoBehaviour
 
         if(bakeAmount >= 0.75)
         {
-            rb.isKinematic = true;
-            bc.enabled = false;
+            //rb.isKinematic = true;
+            //bc.enabled = false;
             anim.SetTrigger("Pop");
             ps.Play();
             GetComponent<EnemyFill>().enabled = false;
+            transform.parent.GetComponent<Rigidbody2D>().isKinematic = true;
+            transform.parent.GetComponent<BoxCollider2D>().enabled = false;
+            transform.parent.GetComponent<EnemyApproacher>().enabled = false;
+            GetComponentInChildren<BoxCollider2D>().enabled = false;
         }
     }
 }
