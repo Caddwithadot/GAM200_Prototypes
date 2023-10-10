@@ -7,8 +7,10 @@ public class EnemyChase : MonoBehaviour
     private Rigidbody2D rb;
     private Transform player;
     private EnemyPatrol enemyPatrol;
+    private EnemyFlip enemyFlip;
 
     public float jumpForce = 9f;
+    public float jumpSpeedBoost = 10f;
 
     private float jumpTimer = 0f;
     public float jumpCooldown = 1f;
@@ -25,6 +27,7 @@ public class EnemyChase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemyPatrol = GetComponent<EnemyPatrol>();
+        enemyFlip = GetComponent<EnemyFlip>();
     }
 
     // Update is called once per frame
@@ -61,7 +64,7 @@ public class EnemyChase : MonoBehaviour
 
     public void Jump()
     {
-        rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(rb.velocity.x + (jumpSpeedBoost * enemyFlip.direction), jumpForce), ForceMode2D.Impulse);
         jumpTimer = jumpCooldown;
     }
 }

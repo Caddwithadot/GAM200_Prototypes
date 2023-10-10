@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private Animator animator;
+    private SpriteRenderer sr;
+
     public GameObject flashLight;
     public GameObject playerAura;
 
     public int health = 4;
-    private Animator animator;
-    private SpriteRenderer sr;
+    private int maxHealth;
 
     private float invTimer = 0f;
     public float invFrameCooldown = 3f;
@@ -22,13 +24,12 @@ public class PlayerHealth : MonoBehaviour
 
     private bool isHealing = false;
     private float healTimer = 0f;
-    public float healDelay = 2f;
-
-    public bool flashlightRegenerate = false;
-    public bool passiveHealing = false;
+    public float passHealDelay = 5f;
+    public float lampHealDelay = 0.5f;
 
     private void Start()
     {
+        maxHealth = health;
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
     }
@@ -57,11 +58,12 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        if (isHealing && health < 4 || passiveHealing && health < 4)
+        // lamp healing
+        if (isHealing && health < maxHealth)
         {
             healTimer += Time.deltaTime;
 
-            if (healTimer >= healDelay)
+            if (healTimer >= lampHealDelay)
             {
                 health++;
 
@@ -69,7 +71,21 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        if (health == 4)
+        // passive healing
+        if(health < maxHealth - 1)
+        {
+            healTimer += Time.deltaTime;
+
+            if (healTimer >= passHealDelay)
+            {
+                health++;
+
+                healTimer = 0f;
+            }
+        }
+
+        // scales aura based on health
+        if (health == maxHealth)
         {
             playerAura.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             sr.color = new Color(1, 1, 1);
@@ -109,14 +125,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Aura") && !passiveHealing)
+        if (collision.CompareTag("Aura"))
         {
             isHealing = true;
-
-            if (flashlightRegenerate)
-            {
-                flashLight.GetComponent<FlashlightEnergy>().passiveRegenerate = true;
-            }
         }
 
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
@@ -135,15 +146,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Aura") && !passiveHealing)
+        if (collision.CompareTag("Aura"))
         {
             isHealing = false;
             healTimer = 0f;
-
-            if (flashlightRegenerate)
-            {
-                flashLight.GetComponent<FlashlightEnergy>().passiveRegenerate = false;
-            }
         }
     }
 }

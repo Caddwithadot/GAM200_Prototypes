@@ -73,8 +73,6 @@ public class EnemyFill : MonoBehaviour
 
         if(bakeAmount >= 0.75)
         {
-            //rb.isKinematic = true;
-            //bc.enabled = false;
             anim.SetTrigger("Pop");
             ps.Play();
             GetComponent<EnemyFill>().enabled = false;

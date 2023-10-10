@@ -9,6 +9,8 @@ public class EnemyFlip : MonoBehaviour
 
     public Transform detectors;
 
+    public int direction = 1;
+
     void Start()
     {
         // Initialize the previous position to the initial position
@@ -25,11 +27,13 @@ public class EnemyFlip : MonoBehaviour
         if (currentPositionX < previousPositionX)
         {
             detectors.localScale = new Vector2(startingScaleX, detectors.localScale.y);
+            direction = -1;
         }
         // Check if the object has moved to the right (increasing X position)
         else if (currentPositionX > previousPositionX)
         {
             detectors.localScale = new Vector2(-startingScaleX, detectors.localScale.y);
+            direction = 1;
         }
 
         // Update the previous position

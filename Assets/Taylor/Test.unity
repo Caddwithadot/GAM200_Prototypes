@@ -524,7 +524,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &791360070
 AudioListener:
@@ -828,7 +828,7 @@ Transform:
   - {fileID: 1918430004}
   - {fileID: 1376235653}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1097854679
 GameObject:
@@ -1104,9 +1104,8 @@ MonoBehaviour:
   health: 4
   invFrameCooldown: 2
   deathDelay: 0.5
-  healDelay: 0.5
-  flashlightRegenerate: 0
-  passiveHealing: 0
+  passHealDelay: 5
+  lampHealDelay: 0.5
 --- !u!82 &1271311803
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1649,7 +1648,7 @@ Transform:
   - {fileID: 938619697}
   - {fileID: 1045829157}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1812707561
 GameObject:
@@ -10724,6 +10723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 9
+  jumpSpeedBoost: 1
   jumpCooldown: 1
   playerOffset: -1
   groundDetector: {fileID: 1885384496}
@@ -10742,3 +10742,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectors: {fileID: 707860862}
+  direction: 1
