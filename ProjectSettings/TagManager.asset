@@ -12,6 +12,7 @@ TagManager:
   - Lamp
   - TransitionCanvas
   - Aura
+  - EnemyTriggers
   layers:
   - Default
   - TransparentFX

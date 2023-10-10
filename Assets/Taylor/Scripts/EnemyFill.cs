@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyFill : MonoBehaviour
 {
+    public GameObject enemy;
+
     private Rigidbody2D rb;
     private BoxCollider2D bc;
-    private SpriteRenderer sr;
     private Animator anim;
+    private SpriteRenderer sr;
     private ParticleSystem ps;
 
     public float bakeAmount = 0f;
@@ -27,10 +29,11 @@ public class EnemyFill : MonoBehaviour
 
     private void Start()
     {
-        rb = transform.parent.GetComponent<Rigidbody2D>();
-        bc = transform.parent.GetComponent<BoxCollider2D>();
+        rb = enemy.GetComponent<Rigidbody2D>();
+        bc = enemy.GetComponent<BoxCollider2D>();
+        anim = enemy.GetComponent<Animator>();
+
         sr = GetComponent<SpriteRenderer>();
-        anim = transform.parent.GetComponent<Animator>();
         ps = GetComponent<ParticleSystem>();
 
         startColor = sr.color;
@@ -77,7 +80,8 @@ public class EnemyFill : MonoBehaviour
             GetComponent<EnemyFill>().enabled = false;
             transform.parent.GetComponent<Rigidbody2D>().isKinematic = true;
             transform.parent.GetComponent<BoxCollider2D>().enabled = false;
-            transform.parent.GetComponent<EnemyApproacher>().enabled = false;
+            transform.parent.GetComponent<EnemyPatrol>().enabled = false;
+            transform.parent.GetComponent<EnemyChase>().enabled = false;
             GetComponentInChildren<BoxCollider2D>().enabled = false;
         }
     }
