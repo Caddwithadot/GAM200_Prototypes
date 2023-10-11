@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrol : MonoBehaviour
+public class EnemyPatrolWithChase : MonoBehaviour
 {
     public Transform pointA;
     public Transform pointB;

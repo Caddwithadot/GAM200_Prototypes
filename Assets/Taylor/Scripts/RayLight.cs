@@ -54,7 +54,7 @@ public class RayLight : MonoBehaviour
                 //
                 if(raycastHit2D.collider.tag == "Enemy" && mouseControls.kill)
                 {
-                    raycastHit2D.collider.GetComponentInChildren<EnemyFill>().StartFilling();
+                    raycastHit2D.collider.GetComponent<EnemyFill>().StartFilling();
                     stopKilling = true;
                 }
                 else if (raycastHit2D.collider.tag != "Enemy")

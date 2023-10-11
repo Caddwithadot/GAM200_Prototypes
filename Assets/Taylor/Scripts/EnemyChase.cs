@@ -6,7 +6,7 @@ public class EnemyChase : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Transform player;
-    private EnemyPatrol enemyPatrol;
+    private EnemyPatrolWithChase enemyPatrol;
     private EnemyFlip enemyFlip;
 
     public float jumpForce = 9f;
@@ -26,7 +26,7 @@ public class EnemyChase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemyPatrol = GetComponent<EnemyPatrol>();
+        enemyPatrol = GetComponent<EnemyPatrolWithChase>();
         enemyFlip = GetComponent<EnemyFlip>();
     }
 

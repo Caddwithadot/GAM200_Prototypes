@@ -5,9 +5,11 @@ using UnityEngine;
 public class EnemyFlip : MonoBehaviour
 {
     private float previousPositionX;
-    private float startingScaleX;
+    private float detectorsStartX;
+    private float spriteStartX;
 
     public Transform detectors;
+    public Transform sprite;
 
     public int direction = 1;
 
@@ -15,7 +17,8 @@ public class EnemyFlip : MonoBehaviour
     {
         // Initialize the previous position to the initial position
         previousPositionX = transform.position.x;
-        startingScaleX = detectors.localScale.x;
+        detectorsStartX = detectors.localScale.x;
+        spriteStartX = sprite.localScale.x;
     }
 
     void Update()
@@ -26,13 +29,15 @@ public class EnemyFlip : MonoBehaviour
         // Check if the object has moved to the left (decreasing X position)
         if (currentPositionX < previousPositionX)
         {
-            detectors.localScale = new Vector2(startingScaleX, detectors.localScale.y);
+            detectors.localScale = new Vector2(detectorsStartX, detectors.localScale.y);
+            sprite.localScale = new Vector2(spriteStartX, sprite.localScale.y);
             direction = -1;
         }
         // Check if the object has moved to the right (increasing X position)
         else if (currentPositionX > previousPositionX)
         {
-            detectors.localScale = new Vector2(-startingScaleX, detectors.localScale.y);
+            detectors.localScale = new Vector2(-detectorsStartX, detectors.localScale.y);
+            sprite.localScale = new Vector2(-spriteStartX, sprite.localScale.y);
             direction = 1;
         }
 

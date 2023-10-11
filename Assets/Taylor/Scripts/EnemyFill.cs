@@ -5,12 +5,16 @@ using UnityEngine;
 public class EnemyFill : MonoBehaviour
 {
     public GameObject enemy;
+    public Transform playerTrigger;
 
     private Rigidbody2D rb;
-    private BoxCollider2D bc;
     private Animator anim;
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
     private ParticleSystem ps;
+
+    private EnemyPatrolNoChase enemyPatrolNoChase;
+    private EnemyPatrolWithChase enemyPatrolWithChase;
+    private EnemyChase enemyChase;
 
     public float bakeAmount = 0f;
     public float fillSpeed = 0.5f;
@@ -30,11 +34,18 @@ public class EnemyFill : MonoBehaviour
     private void Start()
     {
         rb = enemy.GetComponent<Rigidbody2D>();
-        bc = enemy.GetComponent<BoxCollider2D>();
         anim = enemy.GetComponent<Animator>();
-
-        sr = GetComponent<SpriteRenderer>();
         ps = GetComponent<ParticleSystem>();
+
+        if (enemy.GetComponent<EnemyPatrolWithChase>() != null)
+        {
+            enemyPatrolWithChase = enemy.GetComponent<EnemyPatrolWithChase>();
+            enemyChase = enemy.GetComponent<EnemyChase>();
+        }
+        else if(enemy.GetComponent<EnemyPatrolNoChase>() != null)
+        {
+            enemyPatrolNoChase = enemy.GetComponent<EnemyPatrolNoChase>();
+        }
 
         startColor = sr.color;
         startSize = transform.localScale;
@@ -68,19 +79,28 @@ public class EnemyFill : MonoBehaviour
 
         currentColor = sr.color;
         currentSize = transform.localScale;
-        bc.size = transform.localScale;
         bakeAmount = transform.localScale.x - startSize.x;
 
         if(bakeAmount >= 0.75)
         {
             anim.SetTrigger("Pop");
             ps.Play();
+
+            rb.isKinematic = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+            playerTrigger.GetComponent<BoxCollider2D>().enabled = false;
+
+            if(enemyPatrolWithChase != null)
+            {
+                enemyPatrolWithChase.enabled = false;
+                enemyChase.enabled = false;
+            }
+            else if(enemyPatrolNoChase != null)
+            {
+                enemyPatrolNoChase.enabled = false;
+            }
+
             GetComponent<EnemyFill>().enabled = false;
-            transform.parent.GetComponent<Rigidbody2D>().isKinematic = true;
-            transform.parent.GetComponent<BoxCollider2D>().enabled = false;
-            transform.parent.GetComponent<EnemyPatrol>().enabled = false;
-            transform.parent.GetComponent<EnemyChase>().enabled = false;
-            GetComponentInChildren<BoxCollider2D>().enabled = false;
         }
     }
 }
