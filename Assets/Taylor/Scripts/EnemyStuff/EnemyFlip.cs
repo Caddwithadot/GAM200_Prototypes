@@ -16,8 +16,11 @@ public class EnemyFlip : MonoBehaviour
     void Start()
     {
         // Initialize the previous position to the initial position
+        if(detectors != null)
+        {
+            detectorsStartX = detectors.localScale.x;
+        }
         previousPositionX = transform.position.x;
-        detectorsStartX = detectors.localScale.x;
         spriteStartX = sprite.localScale.x;
     }
 
@@ -29,14 +32,20 @@ public class EnemyFlip : MonoBehaviour
         // Check if the object has moved to the left (decreasing X position)
         if (currentPositionX < previousPositionX)
         {
-            detectors.localScale = new Vector2(detectorsStartX, detectors.localScale.y);
+            if(detectors != null)
+            {
+                detectors.localScale = new Vector2(detectorsStartX, detectors.localScale.y);
+            }
             sprite.localScale = new Vector2(spriteStartX, sprite.localScale.y);
             direction = -1;
         }
         // Check if the object has moved to the right (increasing X position)
         else if (currentPositionX > previousPositionX)
         {
-            detectors.localScale = new Vector2(-detectorsStartX, detectors.localScale.y);
+            if(detectors != null)
+            {
+                detectors.localScale = new Vector2(-detectorsStartX, detectors.localScale.y);
+            }
             sprite.localScale = new Vector2(-spriteStartX, sprite.localScale.y);
             direction = 1;
         }

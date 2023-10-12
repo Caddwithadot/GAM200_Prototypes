@@ -15,9 +15,7 @@ public class EnemyFill : MonoBehaviour
     public SpriteRenderer sr;
     private ParticleSystem ps;
 
-    private EnemyPatrolNoChase enemyPatrolNoChase;
-    private EnemyPatrolWithChase enemyPatrolWithChase;
-    private EnemyChase enemyChase;
+    private MonoBehaviour[] scriptsOnEnemy;
 
     public float bakeAmount = 0f;
     public float fillSpeed = 0.5f;
@@ -36,21 +34,12 @@ public class EnemyFill : MonoBehaviour
 
     private void Start()
     {
+        scriptsOnEnemy = enemy.GetComponents<MonoBehaviour>();
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
 
         rb = enemy.GetComponent<Rigidbody2D>();
         anim = enemy.GetComponent<Animator>();
         ps = GetComponent<ParticleSystem>();
-
-        if (enemy.GetComponent<EnemyPatrolWithChase>() != null)
-        {
-            enemyPatrolWithChase = enemy.GetComponent<EnemyPatrolWithChase>();
-            enemyChase = enemy.GetComponent<EnemyChase>();
-        }
-        else if(enemy.GetComponent<EnemyPatrolNoChase>() != null)
-        {
-            enemyPatrolNoChase = enemy.GetComponent<EnemyPatrolNoChase>();
-        }
 
         startColor = sr.color;
         startSize = transform.localScale;
@@ -95,14 +84,9 @@ public class EnemyFill : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
             playerTrigger.GetComponent<BoxCollider2D>().enabled = false;
 
-            if(enemyPatrolWithChase != null)
+            foreach(var script in scriptsOnEnemy)
             {
-                enemyPatrolWithChase.enabled = false;
-                enemyChase.enabled = false;
-            }
-            else if(enemyPatrolNoChase != null)
-            {
-                enemyPatrolNoChase.enabled = false;
+                script.enabled = false;
             }
 
             GetComponent<EnemyFill>().enabled = false;
@@ -115,6 +99,11 @@ public class EnemyFill : MonoBehaviour
         {
             StartFilling();
         }
+
+        if (collision.tag == "Light" || collision.tag == "PlayerAura")
+        {
+            spriteHighlight.enabled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -124,7 +113,7 @@ public class EnemyFill : MonoBehaviour
             StartFilling();
         }
 
-        if (collision.tag == "Light")
+        if (collision.tag == "Light" || collision.tag == "PlayerAura")
         {
             spriteHighlight.enabled = true;
         }
@@ -137,7 +126,7 @@ public class EnemyFill : MonoBehaviour
             StopFilling();
         }
 
-        if (collision.tag == "Light")
+        if (collision.tag == "Light" || collision.tag == "PlayerAura")
         {
             spriteHighlight.enabled = false;
         }

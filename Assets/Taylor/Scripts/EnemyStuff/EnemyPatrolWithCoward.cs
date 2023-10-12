@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrolWithChase : MonoBehaviour
+public class EnemyPatrolWithCoward : MonoBehaviour
 {
     public Transform pointA;
     public Transform pointB;
-    public float patrolSpeed = 2.0f;
-    public float chaseSpeed = 5.0f; // Speed while chasing
-    public float followDistance = 5.0f;
-    public float followDuration = 10.0f;
-    private Transform targetToFollow;
+    public float patrolSpeed = 1.0f;
+    public float cowardSpeed = 2.0f;
+    public float followDuration = 3.0f;
+
+    private MouseControls mouseControls;
+    public Transform cowardPoint;
 
     private float journeyLength;
     private float startTime;
@@ -23,7 +24,8 @@ public class EnemyPatrolWithChase : MonoBehaviour
 
     void Start()
     {
-        targetToFollow = GameObject.FindGameObjectWithTag("Player").transform;
+        mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
+
         transform.position = new Vector3(pointA.position.x, transform.position.y, pointA.position.z);
         journeyLength = Mathf.Abs(pointA.position.x - pointB.position.x);
         startTime = Time.time;
@@ -69,22 +71,16 @@ public class EnemyPatrolWithChase : MonoBehaviour
 
             patrolDirection *= -1f;
         }
-
-        if (targetToFollow != null && Vector3.Distance(transform.position, targetToFollow.position) < followDistance)
-        {
-            isFollowingTarget = true;
-            followTimer = followDuration;
-        }
     }
 
     private void FollowTarget()
     {
-        if (targetToFollow != null)
+        if (cowardPoint != null)
         {
-            targetPosition = new Vector3(targetToFollow.position.x, transform.position.y, transform.position.z);
+            targetPosition = new Vector3(cowardPoint.position.x, transform.position.y, transform.position.z);
 
             // Use chaseSpeed while chasing
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, chaseSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, cowardSpeed * Time.deltaTime);
 
             followTimer -= Time.deltaTime;
 
@@ -111,6 +107,24 @@ public class EnemyPatrolWithChase : MonoBehaviour
         if (Mathf.Approximately(transform.position.x, targetPosition.x))
         {
             isReturningToPatrol = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerAura" || collision.tag == "Light" && mouseControls.kill)
+        {
+            isFollowingTarget = true;
+            followTimer = followDuration;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerAura" || collision.tag == "Light" && mouseControls.kill)
+        {
+            isFollowingTarget = true;
+            followTimer = followDuration;
         }
     }
 }

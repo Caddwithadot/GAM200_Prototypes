@@ -13,6 +13,7 @@ TagManager:
   - TransitionCanvas
   - Aura
   - EnemyTriggers
+  - PlayerAura
   layers:
   - Default
   - TransparentFX
