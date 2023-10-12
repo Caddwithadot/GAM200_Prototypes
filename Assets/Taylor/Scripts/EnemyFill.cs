@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyFill : MonoBehaviour
 {
+    private MouseControls mouseControls;
+    public SpriteRenderer spriteHighlight;
+
     public GameObject enemy;
     public Transform playerTrigger;
 
@@ -33,6 +36,8 @@ public class EnemyFill : MonoBehaviour
 
     private void Start()
     {
+        mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
+
         rb = enemy.GetComponent<Rigidbody2D>();
         anim = enemy.GetComponent<Animator>();
         ps = GetComponent<ParticleSystem>();
@@ -101,6 +106,40 @@ public class EnemyFill : MonoBehaviour
             }
 
             GetComponent<EnemyFill>().enabled = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Light" && mouseControls.kill)
+        {
+            StartFilling();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Light" && mouseControls.kill)
+        {
+            StartFilling();
+        }
+
+        if (collision.tag == "Light")
+        {
+            spriteHighlight.enabled = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!mouseControls.kill)
+        {
+            StopFilling();
+        }
+
+        if (collision.tag == "Light")
+        {
+            spriteHighlight.enabled = false;
         }
     }
 }

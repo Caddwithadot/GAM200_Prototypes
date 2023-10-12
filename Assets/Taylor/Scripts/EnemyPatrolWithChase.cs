@@ -10,7 +10,7 @@ public class EnemyPatrolWithChase : MonoBehaviour
     public float chaseSpeed = 5.0f; // Speed while chasing
     public float followDistance = 5.0f;
     public float followDuration = 10.0f;
-    public Transform targetToFollow;
+    private Transform targetToFollow;
 
     private float journeyLength;
     private float startTime;
@@ -23,6 +23,7 @@ public class EnemyPatrolWithChase : MonoBehaviour
 
     void Start()
     {
+        targetToFollow = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = new Vector3(pointA.position.x, transform.position.y, pointA.position.z);
         journeyLength = Mathf.Abs(pointA.position.x - pointB.position.x);
         startTime = Time.time;

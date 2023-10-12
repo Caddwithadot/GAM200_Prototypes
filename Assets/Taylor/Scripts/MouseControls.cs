@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MouseControls : MonoBehaviour
 {
-    [SerializeField] private RayLight rayLight;
+    [SerializeField] private RayLightNEW rayLight;
     private Transform player;
 
     public float interpolant = 300f;
