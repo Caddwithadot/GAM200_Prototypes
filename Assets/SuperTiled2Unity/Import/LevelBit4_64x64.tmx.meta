@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a31f4b2c642813b44a2dfdd4d63845ff
+guid: 77193cfe01341ec48bee1ea7a67e8536
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -8,16 +8,14 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
-  missingFiles:
-  - TestTileset.tsx
-  errors:
-  - 'Missing tileset asset: TestTileset.tsx'
+  missingFiles: []
+  errors: []
   warnings: []
   missingSortingLayers: []
   missingLayers: []
   missingTags: []
   importerVersion: 26
-  pixelsPerUnit: 16
+  pixelsPerUnit: 64
   edgesPerEllipse: 32
   numberOfObjectsImported: 2
   tilesAsObjects: 0

@@ -8,10 +8,11 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
-  missingFiles: []
-  errors: []
-  warnings:
-  - Pixels Per Unit mismatch between map (100) and tileset 'TestTileset.tsx' (16)
+  missingFiles:
+  - TestTileset.tsx
+  errors:
+  - 'Missing tileset asset: TestTileset.tsx'
+  warnings: []
   missingSortingLayers: []
   missingLayers: []
   missingTags: []

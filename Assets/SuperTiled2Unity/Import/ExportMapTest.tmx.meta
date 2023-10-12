@@ -11,7 +11,7 @@ ScriptedImporter:
   missingFiles: []
   errors: []
   warnings:
-  - Pixels Per Unit mismatch between map (100) and tileset 'TestTileset.tsx' (16)
+  - Pixels Per Unit mismatch between map (100) and tileset 'Tileset_64x64.tsx' (64)
   missingSortingLayers: []
   missingLayers: []
   missingTags: []
