@@ -91,27 +91,27 @@ public class PlayerHealth : MonoBehaviour
         // scales aura based on health
         if (health == maxHealth)
         {
-            rayAura.SetViewDistance(2.5f);
-            playerAura.transform.localScale = new Vector3(7.5f, 7.5f, 1);
+            rayAura.SetViewDistance(2f);
+            playerAura.transform.localScale = new Vector3(6f, 6f, 1);
             sr.color = new Color(1, 1, 1);
         }
         else if (health == 3)
         {
-            rayAura.SetViewDistance(2f);
-            playerAura.transform.localScale = new Vector3(6f, 6f, 1);
+            rayAura.SetViewDistance(1.5f);
+            playerAura.transform.localScale = new Vector3(4.5f, 4.5f, 1);
             sr.color = new Color(0.8f, 0.8f, 0.8f);
         }
         else if (health == 2)
         {
-            rayAura.SetViewDistance(1.5f);
-            playerAura.transform.localScale = new Vector3(4.5f, 4.5f, 1);
-            sr.color = new Color(0.6f, 0.6f, 0.6f);
+            rayAura.SetViewDistance(0.75f);
+            playerAura.transform.localScale = new Vector3(2.25f, 2.25f, 1);
+            sr.color = new Color(0.4f, 0.4f, 0.4f);
         }
         else if (health == 1)
         {
-            rayAura.SetViewDistance(0.75f);
-            playerAura.transform.localScale = new Vector3(2.25f, 2.25f, 1);
-            sr.color = new Color(0.2f, 0.2f, 0.2f);
+            rayAura.SetViewDistance(0.375f);
+            playerAura.transform.localScale = new Vector3(1.125f, 1.125f, 1);
+            sr.color = new Color(0f, 0f, 0f);
         }
     }
 
@@ -142,6 +142,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
             TakeDamage(1);
+            healTimer = 0;
         }
     }
 
@@ -150,6 +151,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
             TakeDamage(1);
+            healTimer = 0;
         }
     }
 

@@ -77,12 +77,12 @@ public class EnemyFill : MonoBehaviour
 
         if(bakeAmount >= 0.75)
         {
-            anim.SetTrigger("Pop");
-            ps.Play();
-
             rb.isKinematic = true;
             GetComponent<BoxCollider2D>().enabled = false;
             playerTrigger.GetComponent<BoxCollider2D>().enabled = false;
+
+            anim.SetTrigger("Pop");
+            ps.Play();
 
             foreach(var script in scriptsOnEnemy)
             {

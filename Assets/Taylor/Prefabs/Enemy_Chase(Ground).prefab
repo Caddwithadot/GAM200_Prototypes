@@ -675,7 +675,7 @@ MonoBehaviour:
   playerTrigger: {fileID: 319107906693207939}
   sr: {fileID: 319107906629661518}
   bakeAmount: 0
-  fillSpeed: 0.5
+  fillSpeed: 1
   revertSpeed: 2
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   targetSize: {x: 2, y: 2}
@@ -5551,7 +5551,7 @@ MonoBehaviour:
   pointA: {fileID: 319107906227335034}
   pointB: {fileID: 319107905694315723}
   patrolSpeed: 1
-  chaseSpeed: 3
+  chaseSpeed: 2.5
   followDuration: 5
   isFollowingTarget: 0
   isReturningToPatrol: 0

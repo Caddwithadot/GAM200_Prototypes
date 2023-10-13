@@ -209,7 +209,7 @@ MonoBehaviour:
   pointA: {fileID: 6687552012639300884}
   pointB: {fileID: 6687552013171898021}
   patrolSpeed: 0.5
-  cowardSpeed: 2
+  cowardSpeed: 3.5
   followDuration: 5
   cowardPoint: {fileID: 37958972501507763}
   isFollowingTarget: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   playerTrigger: {fileID: 6687552014187304429}
   sr: {fileID: 6687552014115631392}
   bakeAmount: 0
-  fillSpeed: 0.5
+  fillSpeed: 1
   revertSpeed: 2
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   targetSize: {x: 2, y: 2}

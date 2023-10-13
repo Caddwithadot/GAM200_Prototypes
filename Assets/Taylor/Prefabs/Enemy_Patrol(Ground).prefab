@@ -319,7 +319,7 @@ MonoBehaviour:
   playerTrigger: {fileID: 3359745230494316716}
   sr: {fileID: 3359745230432066657}
   bakeAmount: 0
-  fillSpeed: 0.5
+  fillSpeed: 1
   revertSpeed: 2
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   targetSize: {x: 2, y: 2}
