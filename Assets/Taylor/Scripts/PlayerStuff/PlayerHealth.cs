@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject flashLight;
     public GameObject playerAura;
 
+    public RayAura rayAura;
+
     public int health = 4;
     private int maxHealth;
 
@@ -84,24 +86,30 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
+        rayAura.SetOrigin(transform.position);
+
         // scales aura based on health
         if (health == maxHealth)
         {
+            rayAura.SetViewDistance(2.5f);
             playerAura.transform.localScale = new Vector3(7.5f, 7.5f, 1);
             sr.color = new Color(1, 1, 1);
         }
         else if (health == 3)
         {
+            rayAura.SetViewDistance(2f);
             playerAura.transform.localScale = new Vector3(6f, 6f, 1);
             sr.color = new Color(0.8f, 0.8f, 0.8f);
         }
         else if (health == 2)
         {
+            rayAura.SetViewDistance(1.5f);
             playerAura.transform.localScale = new Vector3(4.5f, 4.5f, 1);
             sr.color = new Color(0.6f, 0.6f, 0.6f);
         }
         else if (health == 1)
         {
+            rayAura.SetViewDistance(0.75f);
             playerAura.transform.localScale = new Vector3(2.25f, 2.25f, 1);
             sr.color = new Color(0.2f, 0.2f, 0.2f);
         }
@@ -115,6 +123,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            rayAura.gameObject.SetActive(false);
             playerAura.transform.localScale = Vector3.zero;
             sr.color = new Color(0, 0, 0);
 
