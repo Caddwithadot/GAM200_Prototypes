@@ -7,6 +7,7 @@ public class JumpThroughPlatform : MonoBehaviour
     public GameObject Player = null;
     public float Offset = -0.25f;
     public bool HoldingDown = false;
+
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
@@ -23,13 +24,13 @@ public class JumpThroughPlatform : MonoBehaviour
             HoldingDown = false;
         }
 
-        if (Player != null && Player.transform.position.y + Offset >= transform.position.y && !HoldingDown)
+        if (Player.transform.position.y + Offset >= transform.position.y && !HoldingDown)
         {
-                transform.GetComponent<BoxCollider2D>().enabled = true;
+            Physics2D.IgnoreLayerCollision(9, 10, false);
         }
         else
         {
-            transform.GetComponent<BoxCollider2D>().enabled = false;
+            Physics2D.IgnoreLayerCollision(9, 10, true);
         }
     }
 }
