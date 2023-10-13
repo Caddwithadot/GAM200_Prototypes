@@ -9,7 +9,7 @@ public class PlayerMovementNEW : MonoBehaviour
     public float moveSpeed = 4f;
     public float jumpForce = 9f;
 
-    private bool isGrounded;
+    public bool isGrounded;
     public float coyoteTime = 0.5f;
     private float coyoteTimer = 0f;
     public float juffTime = 0.15f;
@@ -20,7 +20,6 @@ public class PlayerMovementNEW : MonoBehaviour
     public AudioClip jumpSound;
     public List<string> ignoreTags;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -73,7 +72,7 @@ public class PlayerMovementNEW : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (!ignoreTags.Contains(collision.tag))
         {
