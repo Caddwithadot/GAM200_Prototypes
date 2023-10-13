@@ -5137,7 +5137,7 @@ GameObject:
   - component: {fileID: 6687552012607301902}
   - component: {fileID: 6687552012607301903}
   - component: {fileID: 6687552012607301904}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundDetector
   m_TagString: EnemyTriggers
   m_Icon: {fileID: 0}
@@ -5313,7 +5313,7 @@ GameObject:
   - component: {fileID: 6687552013302645572}
   - component: {fileID: 6687552013302645574}
   - component: {fileID: 6687552013302645573}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VoidDetector
   m_TagString: EnemyTriggers
   m_Icon: {fileID: 0}
@@ -5390,7 +5390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6687552013577330526}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Detectors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5426,7 +5426,7 @@ GameObject:
   - component: {fileID: 6687552013582270967}
   - component: {fileID: 6687552013582270969}
   - component: {fileID: 6687552013582270968}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallformDetector
   m_TagString: EnemyTriggers
   m_Icon: {fileID: 0}
