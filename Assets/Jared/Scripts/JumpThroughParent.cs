@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class JumpThroughParent : MonoBehaviour
@@ -8,7 +7,7 @@ public class JumpThroughParent : MonoBehaviour
     public Transform Player;
     public GameObject CurrentJTP;
     public int CurrentJTPIndex = 0;
-    public float Offset = -0.25f;
+    public float Offset = -0.5f;
 
     private void Start()
     {
