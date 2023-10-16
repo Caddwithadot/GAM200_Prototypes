@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Taylor/Test.unity
+    guid: c5ff0be5b1adf6f43acd8cf4c0112b9a
   m_configObjects: {}

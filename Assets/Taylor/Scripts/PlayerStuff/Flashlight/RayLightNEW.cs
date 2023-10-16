@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class RayLightNEW : MonoBehaviour
 {
-    [SerializeField] private MouseControls mouseControls;
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
     private float fov;
@@ -19,8 +18,8 @@ public class RayLightNEW : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        fov = mouseControls.startAngle;
-        viewDistance = mouseControls.startDist;
+        fov = GetComponent<RayLightEnergy>().startAngle;
+        viewDistance = GetComponent<RayLightEnergy>().startDist;
         origin = Vector3.zero;
 
         //collider

@@ -9,7 +9,6 @@ public class PlayerHealth : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sr;
 
-    public GameObject flashLight;
     public GameObject playerAura;
 
     public RayAura rayAura;
