@@ -10,23 +10,23 @@ public class RayLightEnergy : MonoBehaviour
 
     private Animator animator;
 
-    public float startAngle = 60f;
-    public float startDist = 50f;
+    public float startAngle = 45f;
+    public float startDist = 4f;
 
-    public float endAngle = 30f;
-    public float endDist = 100f;
+    public float endAngle = 8f;
+    public float endDist = 12f;
 
     public Material flashLightMat;
     public Color defaultColor;
     public Color focusColor;
 
     private float overheatTimer;
-    public float timeUntilOverheat;
+    public float timeUntilOverheat = 5;
 
     private bool overheat = false;
 
     private float cooldownTimer;
-    public float timeOfCooldown;
+    public float timeOfCooldown = 3;
 
     private bool animCheckOne = false;
     private bool animCheckTwo = false;
@@ -47,13 +47,11 @@ public class RayLightEnergy : MonoBehaviour
                 animator.SetTrigger("reset");
                 GetComponent<MeshRenderer>().enabled = true;
 
-                rayLight.SetFOV(startAngle);
-                rayLight.SetViewDistance(startDist);
+                UnfocusLight();
             }
             else
             {
-                rayLight.SetFOV(endAngle);
-                rayLight.SetViewDistance(endDist);
+                FocusLight();
             }
 
             if (!mouseControls.kill)
@@ -75,8 +73,7 @@ public class RayLightEnergy : MonoBehaviour
             {
                 overheat = false;
 
-                rayLight.SetFOV(startAngle);
-                rayLight.SetViewDistance(startDist);
+                UnfocusLight();
             }
         }
 
@@ -113,5 +110,17 @@ public class RayLightEnergy : MonoBehaviour
             playerHealth.TakeDamage(1);
             overheatTimer = timeUntilOverheat;
         }
+    }
+
+    public void UnfocusLight()
+    {
+        rayLight.SetFOV(startAngle);
+        rayLight.SetViewDistance(startDist);
+    }
+
+    public void FocusLight()
+    {
+        rayLight.SetFOV(endAngle);
+        rayLight.SetViewDistance(endDist);
     }
 }

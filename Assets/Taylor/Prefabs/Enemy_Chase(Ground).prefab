@@ -473,7 +473,6 @@ MonoBehaviour:
   - Light
   - Aura
   - Player
-  - Enemy
   - EnemyTriggers
   - PlayerAura
 --- !u!1 &319107907169492275
@@ -675,7 +674,7 @@ MonoBehaviour:
   playerTrigger: {fileID: 319107906693207939}
   sr: {fileID: 319107906629661518}
   bakeAmount: 0
-  fillSpeed: 1
+  fillSpeed: 0.5
   revertSpeed: 2
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   targetSize: {x: 2, y: 2}
@@ -5551,7 +5550,7 @@ MonoBehaviour:
   pointA: {fileID: 319107906227335034}
   pointB: {fileID: 319107905694315723}
   patrolSpeed: 1
-  chaseSpeed: 2.5
+  chaseSpeed: 2.25
   followDuration: 5
   isFollowingTarget: 0
   isReturningToPatrol: 0
@@ -5567,8 +5566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f6df8e25906b743b4c44b5eb0a235c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 9
-  jumpSpeedBoost: 1
+  jumpForce: 10
+  jumpSpeedBoost: 2
   jumpCooldown: 1
   playerOffset: -1
   groundDetector: {fileID: 319107906191141758}

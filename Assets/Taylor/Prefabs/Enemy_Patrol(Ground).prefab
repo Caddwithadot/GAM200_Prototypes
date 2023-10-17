@@ -127,7 +127,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.22}
@@ -319,7 +319,7 @@ MonoBehaviour:
   playerTrigger: {fileID: 3359745230494316716}
   sr: {fileID: 3359745230432066657}
   bakeAmount: 0
-  fillSpeed: 1
+  fillSpeed: 0.5
   revertSpeed: 2
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   targetSize: {x: 2, y: 2}

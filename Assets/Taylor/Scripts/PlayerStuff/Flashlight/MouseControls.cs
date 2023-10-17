@@ -10,6 +10,7 @@ public class MouseControls : MonoBehaviour
 
     public float interpolant = 20f;
 
+    public bool canFocus = true;
     public bool focus = false;
     public bool kill = false;
 
@@ -62,8 +63,11 @@ public class MouseControls : MonoBehaviour
 
         if (Input.GetMouseButton(0) && focus)
         {
-            kill = true;
-            checkEnemies = true;
+            if (canFocus)
+            {
+                kill = true;
+                checkEnemies = true;
+            }
         }
 
         if (Input.GetMouseButtonUp(0) || !focus)
