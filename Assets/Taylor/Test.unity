@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Scared(Ground)
       objectReference: {fileID: 0}
+    - target: {fileID: 6687552012887618018, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6687552012887618019, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -762,6 +766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseControls: {fileID: 938619698}
+  cooldownTime: 1
+  playerHealth: {fileID: 1271311802}
 --- !u!1 &1097854679
 GameObject:
   m_ObjectHideFlags: 0

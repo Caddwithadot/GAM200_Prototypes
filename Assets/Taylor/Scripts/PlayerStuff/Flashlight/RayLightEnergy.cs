@@ -44,9 +44,6 @@ public class RayLightEnergy : MonoBehaviour
         {
             if (!mouseControls.focus)
             {
-                animator.SetTrigger("reset");
-                GetComponent<MeshRenderer>().enabled = true;
-
                 UnfocusLight();
             }
             else
@@ -94,9 +91,7 @@ public class RayLightEnergy : MonoBehaviour
 
         if (overheatTimer <= 0)
         {
-            animator.ResetTrigger("trigger");
-            animator.SetTrigger("reset");
-            GetComponent<MeshRenderer>().enabled = true;
+            UnfocusLight();
 
             overheat = true;
             cooldownTimer = timeOfCooldown;
@@ -114,6 +109,10 @@ public class RayLightEnergy : MonoBehaviour
 
     public void UnfocusLight()
     {
+        animator.ResetTrigger("trigger");
+        animator.SetTrigger("reset");
+        GetComponent<MeshRenderer>().enabled = true;
+
         rayLight.SetFOV(startAngle);
         rayLight.SetViewDistance(startDist);
     }

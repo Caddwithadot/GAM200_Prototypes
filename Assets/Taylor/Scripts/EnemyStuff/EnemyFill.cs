@@ -84,6 +84,8 @@ public class EnemyFill : MonoBehaviour
             anim.SetTrigger("Pop");
             ps.Play();
 
+            GameObject.FindGameObjectWithTag("Light").GetComponent<KilledEnemy>().Killed();
+
             foreach(var script in scriptsOnEnemy)
             {
                 script.enabled = false;

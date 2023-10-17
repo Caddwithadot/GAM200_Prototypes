@@ -51,28 +51,35 @@ public class MouseControls : MonoBehaviour
         rayLight.SetAimDirection(transform.right);
         rayLight.SetOrigin(transform.position);
 
-        if (Input.GetMouseButtonDown(1))
+        if (canFocus)
         {
-            focus = true;
-        }
+            if (Input.GetMouseButton(1))
+            {
+                focus = true;
+            }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            focus = false;
-        }
+            if (Input.GetMouseButtonUp(1))
+            {
+                focus = false;
+            }
 
-        if (Input.GetMouseButton(0) && focus)
-        {
-            if (canFocus)
+            if (Input.GetMouseButton(0) && focus)
             {
                 kill = true;
                 checkEnemies = true;
             }
-        }
 
-        if (Input.GetMouseButtonUp(0) || !focus)
+            if (Input.GetMouseButtonUp(0) || !focus)
+            {
+                kill = false;
+                EnemyCheck();
+            }
+        }
+        else
         {
             kill = false;
+            focus = false;
+            checkEnemies = true;
             EnemyCheck();
         }
     }
