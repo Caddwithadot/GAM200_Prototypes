@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
     public bool PickUp = false;
     public AudioSource AudioSource;
     public AudioClip SFX;
+    private const float Score = 1f;
 
     void Start()
     {
@@ -39,7 +40,7 @@ public class Coin : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<Animator>().SetTrigger("Coin_PickUp");
             AudioSource.PlayOneShot(SFX);
-            CC.AddScore(1);
+            CC.CoinScore++;
         }
     }
 }

@@ -9,6 +9,7 @@ public class Chest : MonoBehaviour
     public AudioClip SFX;
     public Sprite ClosedSprite;
     public Sprite OpenSprite;
+    private const float Score = 5f;
 
     void Start()
     {
@@ -27,6 +28,6 @@ public class Chest : MonoBehaviour
 
         AudioSource.PlayOneShot(SFX);
 
-        CC.AddScore(5);
+        CC.CoinScore += 5f;
     }
 }

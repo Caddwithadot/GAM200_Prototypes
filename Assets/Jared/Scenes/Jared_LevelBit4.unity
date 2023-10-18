@@ -3798,7 +3798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df60efe3a769f74291ddbd79b9e67b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinCounter: {fileID: 0}
+  CoinCounter: {fileID: 1871700293}
   CoinScore: 0
 --- !u!114 &1371278636
 MonoBehaviour:
@@ -4245,6 +4245,7 @@ MonoBehaviour:
   deathDelay: 0.5
   passHealDelay: 5
   lampHealDelay: 0.5
+  maxAuraScale: 6
 --- !u!114 &1490191644
 MonoBehaviour:
   m_ObjectHideFlags: 0
