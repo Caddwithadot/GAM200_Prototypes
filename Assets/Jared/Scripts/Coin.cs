@@ -11,7 +11,6 @@ public class Coin : MonoBehaviour
     public bool PickUp = false;
     public AudioSource AudioSource;
     public AudioClip SFX;
-    private const float Score = 1f;
 
     void Start()
     {
@@ -34,7 +33,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !collision.isTrigger)
         {
             PickUp = true;
             GetComponent<CircleCollider2D>().enabled = false;
