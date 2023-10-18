@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
     public float passHealDelay = 5f;
     public float lampHealDelay = 0.5f;
 
+    public float maxAuraScale = 6.0f;
+
     private void Start()
     {
         maxHealth = health;
@@ -85,32 +87,23 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
+        float auraDifference = maxAuraScale / maxHealth;
+        float auraScale = health * auraDifference;
+
+        // Update rayAura and playerAura
         rayAura.SetOrigin(transform.position);
 
-        // scales aura based on health
-        if (health == maxHealth)
+        if (health != 1)
         {
-            rayAura.SetViewDistance(2f);
-            playerAura.transform.localScale = new Vector3(6f, 6f, 1);
-            sr.color = new Color(1, 1, 1);
+            sr.color = new Color((auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale);
+            rayAura.SetViewDistance((auraScale + 1.5f) / 3);
+            playerAura.transform.localScale = new Vector3(auraScale + 1.5f, auraScale + 1.5f, 1);
         }
-        else if (health == 3)
+        else
         {
-            rayAura.SetViewDistance(1.5f);
-            playerAura.transform.localScale = new Vector3(4.5f, 4.5f, 1);
-            sr.color = new Color(0.8f, 0.8f, 0.8f);
-        }
-        else if (health == 2)
-        {
-            rayAura.SetViewDistance(0.75f);
-            playerAura.transform.localScale = new Vector3(2.25f, 2.25f, 1);
-            sr.color = new Color(0.4f, 0.4f, 0.4f);
-        }
-        else if (health == 1)
-        {
-            rayAura.SetViewDistance(0.375f);
-            playerAura.transform.localScale = new Vector3(1.125f, 1.125f, 1);
-            sr.color = new Color(0f, 0f, 0f);
+            sr.color = Color.black;
+            rayAura.SetViewDistance(0.5f);
+            playerAura.transform.localScale = new Vector3(1.5f, 1.5f, 1);
         }
     }
 

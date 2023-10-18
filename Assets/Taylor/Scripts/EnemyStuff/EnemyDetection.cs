@@ -7,7 +7,7 @@ public class EnemyDetection : MonoBehaviour
     public bool detected;
     public List<string> ignoreTags;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (!ignoreTags.Contains(collision.tag))
         {

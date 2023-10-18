@@ -5205,6 +5205,7 @@ MonoBehaviour:
   - Enemy
   - EnemyTriggers
   - PlayerAura
+  - Collectibles
 --- !u!1 &6687552012639300883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,6 +5382,7 @@ MonoBehaviour:
   - Enemy
   - EnemyTriggers
   - PlayerAura
+  - Collectibles
 --- !u!1 &6687552013577330525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5441,7 +5443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6687552013582270966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5493,6 +5495,7 @@ MonoBehaviour:
   - Player
   - EnemyTriggers
   - PlayerAura
+  - Collectibles
 --- !u!1 &6687552014115631326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5588,7 +5591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6687552014187304429}
   - component: {fileID: 6687552014187304430}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Enemy
   m_Icon: {fileID: 0}

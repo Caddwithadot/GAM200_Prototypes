@@ -201,13 +201,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Scared(Ground)
       objectReference: {fileID: 0}
-    - target: {fileID: 6687552012887618018, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6687552012887618019, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6687552012887618019, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -840,7 +836,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 49d9a29f78518b04996eda0b8d58b03c, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -865,7 +861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 319107905376744333, guid: bb6870b848bef4543814c5cfea5fe30f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 319107905376744333, guid: bb6870b848bef4543814c5cfea5fe30f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -983,10 +979,11 @@ MonoBehaviour:
   playerAura: {fileID: 2141612815}
   rayAura: {fileID: 1862259336}
   health: 4
-  invFrameCooldown: 2
+  invFrameCooldown: 1.5
   deathDelay: 0.5
   passHealDelay: 5
   lampHealDelay: 0.5
+  maxAuraScale: 6
 --- !u!82 &1271311803
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1196,7 +1193,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 42fb5d0d4895c014a9633049f7917e9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
