@@ -14,5 +14,11 @@ public class LevelManager : MonoBehaviour
         {
             Rooms[i].AddComponent<JumpThroughParent>();
         }
+
+
+        for (int i = 0; i < GameObject.FindGameObjectWithTag("Hazards").transform.childCount; i++)
+        {
+            GameObject.FindGameObjectWithTag("Hazards").transform.GetChild(i).tag = "Enemy";
+        }
     }
 }
