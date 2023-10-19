@@ -49,7 +49,11 @@ public class KilledEnemy : MonoBehaviour
             mouseControls.canFocus = false;
             rayLightEnergy.UnfocusLight();
 
-            playerHealth.TakeDamage(1);
+            if(playerHealth.health > 1)
+            {
+                playerHealth.TakeDamage(1);
+            }
+
             killedSomething = true;
             finishedWaiting = true;
         }
