@@ -102,7 +102,11 @@ public class RayLightEnergy : MonoBehaviour
             animCheckOne = false;
             animCheckTwo = false;
 
-            playerHealth.TakeDamage(1);
+            if(playerHealth.health > 1)
+            {
+                playerHealth.TakeDamage(1);
+            }
+
             overheatTimer = timeUntilOverheat;
         }
     }
