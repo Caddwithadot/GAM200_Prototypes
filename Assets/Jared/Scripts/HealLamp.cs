@@ -2,34 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LampTrigger : MonoBehaviour
+public class HealLamp : MonoBehaviour
 {
     private MouseControls mouseControls;
-    public Transform Light;
-    public GameObject Door;
+    private Transform Light;
     public Vector3 MinScale = new Vector3(0f, 0f, 0f);
-    public Vector3 MaxScale = new Vector3(0.5f, 0.5f, 0f);
-    public Vector3 ScaleIncrement = new Vector3(0.002f, 0.002f, 0f);
+    public Vector3 MaxScale = new Vector3(1f, 1f, 0f);
+    public Vector3 ScaleIncrement = new Vector3(0.005f, 0.005f, 0f);
     public bool FullyLit = false;
     public bool LightDown = true;
     public float LightDownTimer = 0f;
     public float LightDownTime = 1f;
-    public AudioClip DoorOpenSFX;
-    public GameObject DoorParent;
+    public AudioClip HealLampSFX;
     public bool SFXPlayed = false;
 
     void Start()
     {
-        Door = gameObject.transform.parent.transform.GetChild(1).gameObject;
-        Light = transform.GetChild(0);
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
-        DoorParent = gameObject.transform.parent.transform.GetChild(1).gameObject;
-
-        for (int i = 0; i < Door.transform.childCount; i++)
-        {
-            Door.transform.GetChild(i).gameObject.layer = 7;
-            Door.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = new Color(0.5f, 1f, 1f);
-        }
+        Light = transform.GetChild(0);
     }
 
     void Update()
@@ -73,7 +63,7 @@ public class LampTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && mouseControls.kill )
+        if (collision.tag == "Light" && mouseControls.kill)
         {
             LightUp();
 
@@ -88,17 +78,12 @@ public class LampTrigger : MonoBehaviour
 
     public void FullyLitUp()
     {
-        Light.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.5f, 1f, 1f, 0.4f);
-
-        for (int i = 0; i < Door.transform.childCount; i++)
-        {
-            Door.transform.GetChild(i).GetComponent<BoxCollider2D>().enabled = false;
-            Door.transform.GetChild(i).GetComponent<Animator>().SetTrigger("DoorOpen");
-        }
+        Light.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.7f, 0f, 0.4f);
+        Light.gameObject.tag = "Aura";
 
         if (SFXPlayed == false)
         {
-            DoorParent.GetComponent<AudioSource>().PlayOneShot(DoorOpenSFX);
+            gameObject.GetComponent<AudioSource>().PlayOneShot(HealLampSFX);
             SFXPlayed = true;
         }
     }

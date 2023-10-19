@@ -11,11 +11,6 @@ public class PlaytestSceneTrigger : MonoBehaviour
         {
             if(SceneManager.GetActiveScene().buildIndex == 0)
             {
-                SceneManager.LoadScene(1);
-            }
-
-            if (SceneManager.GetActiveScene().buildIndex == 1)
-            {
                 SceneManager.LoadScene(0);
             }
         }
