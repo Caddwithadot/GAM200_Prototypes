@@ -79,7 +79,7 @@ public class HealLamp : MonoBehaviour
     public void FullyLitUp()
     {
         Light.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.7f, 0f, 0.4f);
-        Light.gameObject.tag = "Aura";
+        Light.gameObject.GetComponent<CircleCollider2D>().enabled = true;
 
         if (SFXPlayed == false)
         {
