@@ -18,7 +18,7 @@ public class RayLightEnergy : MonoBehaviour
 
     public Material flashLightMat;
     public Color defaultColor;
-    public Color focusColor;
+    public Color superChargeColor;
 
     private float overheatTimer;
     public float timeUntilOverheat = 5;
@@ -31,10 +31,29 @@ public class RayLightEnergy : MonoBehaviour
     private bool animCheckOne = false;
     private bool animCheckTwo = false;
 
+    private AudioSource audioSource;
+    public AudioClip focusSound;
+    public AudioClip unfocusSound;
+
+    private bool canFocusSound = false;
+    private bool canUnfocusSound = true;
+
+    public AudioClip chargeSound;
+    public AudioClip unchargeSound;
+
+    private bool canChargeSound = false;
+    private bool canUnchargeSound = true;
+
+    public AudioClip overheatStartOne;
+    public AudioClip overheatStartTwo;
+
+    public AudioClip overheated;
+
     private void Start()
     {
         rayLight = GetComponent<RayLightNEW>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,11 +74,25 @@ public class RayLightEnergy : MonoBehaviour
             {
                 flashLightMat.color = defaultColor;
                 overheatTimer = timeUntilOverheat;
+
+                if (canUnchargeSound)
+                {
+                    audioSource.PlayOneShot(unchargeSound);
+                    canChargeSound = true;
+                    canUnchargeSound = false;
+                }
             }
             else
             {
-                flashLightMat.color = focusColor;
+                flashLightMat.color = superChargeColor;
                 overheatTimer -= Time.deltaTime;
+
+                if (canChargeSound)
+                {
+                    audioSource.PlayOneShot(chargeSound);
+                    canChargeSound = false;
+                    canUnchargeSound = true;
+                }
             }
         }
         else
@@ -75,23 +108,41 @@ public class RayLightEnergy : MonoBehaviour
         }
 
 
-        if (overheatTimer <= 2 && !animCheckOne)
+        if (overheatTimer <= 2)
         {
-            animator.ResetTrigger("reset");
-            animator.SetTrigger("trigger");
-            animCheckOne = true;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(overheatStartOne, 1f);
+            }
+
+            if (!animCheckOne)
+            {
+                animator.ResetTrigger("reset");
+                animator.SetTrigger("trigger");
+                animCheckOne = true;
+            }
         }
 
-        if (overheatTimer <= 1 && !animCheckTwo)
+        if (overheatTimer <= 1)
         {
-            animator.ResetTrigger("reset");
-            animator.SetTrigger("trigger");
-            animCheckTwo = true;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(overheatStartTwo, 1f);
+            }
+
+            if (!animCheckTwo)
+            {
+                animator.ResetTrigger("reset");
+                animator.SetTrigger("trigger");
+                animCheckTwo = true;
+            }
         }
 
         if (overheatTimer <= 0)
         {
             UnfocusLight();
+
+            audioSource.PlayOneShot(overheated, 1);
 
             overheat = true;
             cooldownTimer = timeOfCooldown;
@@ -119,11 +170,28 @@ public class RayLightEnergy : MonoBehaviour
 
         rayLight.SetFOV(startAngle);
         rayLight.SetViewDistance(startDist);
+
+        if (canUnfocusSound)
+        {
+            audioSource.PlayOneShot(unfocusSound);
+            canFocusSound = true;
+            canUnfocusSound = false;
+        }
     }
 
     public void FocusLight()
     {
         rayLight.SetFOV(endAngle);
         rayLight.SetViewDistance(endDist);
+
+        if (canFocusSound)
+        {
+            if (!mouseControls.kill)
+            {
+                audioSource.PlayOneShot(focusSound);
+            }
+            canFocusSound = false;
+            canUnfocusSound = true;
+        }
     }
 }

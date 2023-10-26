@@ -16,7 +16,7 @@ public class PlayerMovementNEW : MonoBehaviour
     private float juffTimer = 0f;
 
     private AudioSource audioSource;
-    public AudioClip[] walkSounds;
+    public AudioClip walkSound;
     public AudioClip jumpSound;
     public List<string> ignoreTags;
 
@@ -55,7 +55,7 @@ public class PlayerMovementNEW : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
-        audioSource.PlayOneShot(jumpSound);
+        audioSource.PlayOneShot(jumpSound, 0.25f);
         coyoteTimer = 0f;
         juffTimer = 0f;
     }
@@ -64,11 +64,9 @@ public class PlayerMovementNEW : MonoBehaviour
     {
         rb.velocity = new Vector3(horizontalInput * moveSpeed, rb.velocity.y);
 
-        if(horizontalInput != 0 && isGrounded)
+        if(horizontalInput != 0 && isGrounded && !audioSource.isPlaying)
         {
-            int randomIndex = Random.Range(0, walkSounds.Length);
-            AudioClip randomClip = walkSounds[randomIndex];
-            audioSource.PlayOneShot(randomClip);
+            audioSource.PlayOneShot(walkSound, 0.25f);
         }
     }
 

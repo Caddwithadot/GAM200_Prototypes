@@ -19,10 +19,6 @@ public class PlayerHealth : MonoBehaviour
     private float invTimer = 0f;
     public float invFrameCooldown = 3f;
 
-    private float deathTimer = 0f;
-    public float deathDelay = 1f;
-    private bool isDead = false;
-
     private bool isHealing = false;
     private float healTimer = 0f;
     public float passHealDelay = 5f;
@@ -30,11 +26,18 @@ public class PlayerHealth : MonoBehaviour
 
     public float maxAuraScale = 6.0f;
 
+    private AudioSource audioSource;
+    public AudioClip hitSound;
+    public AudioClip healSound;
+
+    public SceneHandler sceneHandler;
+
     private void Start()
     {
         maxHealth = health;
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -50,17 +53,6 @@ public class PlayerHealth : MonoBehaviour
             animator.enabled = false;
         }
 
-        if (isDead)
-        {
-            deathTimer += Time.deltaTime;
-
-            if (deathTimer >= deathDelay)
-            {
-                Time.timeScale = 1f;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-        }
-
         // lamp healing
         if (isHealing && health < maxHealth)
         {
@@ -68,12 +60,13 @@ public class PlayerHealth : MonoBehaviour
 
             if (healTimer >= lampHealDelay)
             {
+                audioSource.PlayOneShot(healSound, 0.25f);
                 health++;
-
                 healTimer = 0f;
             }
         }
 
+        /*
         // passive healing
         if(health < maxHealth - 1)
         {
@@ -86,6 +79,7 @@ public class PlayerHealth : MonoBehaviour
                 healTimer = 0f;
             }
         }
+        */
 
         float auraDifference = maxAuraScale / maxHealth;
         float auraScale = health * auraDifference;
@@ -109,18 +103,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int lostHealth)
     {
-        health -= lostHealth;
-
         invTimer = invFrameCooldown;
+
+        health -= lostHealth;
 
         if (health <= 0)
         {
-            rayAura.gameObject.SetActive(false);
-            playerAura.transform.localScale = Vector3.zero;
-            sr.color = new Color(0, 0, 0);
-
-            Time.timeScale = 0.25f;
-            isDead = true;
+            sceneHandler.PlayerDeathReload();
         }
     }
 
@@ -133,6 +122,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
+            if (health > 1)
+            {
+                audioSource.PlayOneShot(hitSound, 3);
+            }
+
             TakeDamage(1);
             healTimer = 0;
         }
@@ -142,6 +136,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
+            if (health > 1)
+            {
+                audioSource.PlayOneShot(hitSound, 3);
+            }
+
             TakeDamage(1);
             healTimer = 0;
         }
