@@ -97,12 +97,12 @@ public class EnemyFill : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && mouseControls.kill)
+        if (collision.tag == "ChargeLight" && mouseControls.kill)
         {
             StartFilling();
         }
 
-        if (collision.tag == "Light" || collision.tag == "PlayerAura")
+        if (collision.tag == "Light" || collision.tag == "PlayerAura" || collision.tag == "ChargeLight")
         {
             spriteHighlight.enabled = true;
         }
@@ -110,12 +110,12 @@ public class EnemyFill : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Light" && mouseControls.kill)
+        if(collision.tag == "ChargeLight" && mouseControls.kill)
         {
             StartFilling();
         }
 
-        if (collision.tag == "Light" || collision.tag == "PlayerAura")
+        if (collision.tag == "Light" || collision.tag == "PlayerAura" || collision.tag == "ChargeLight")
         {
             spriteHighlight.enabled = true;
         }
@@ -128,7 +128,7 @@ public class EnemyFill : MonoBehaviour
             StopFilling();
         }
 
-        if (collision.tag == "Light" || collision.tag == "PlayerAura")
+        if (collision.tag == "Light" || collision.tag == "PlayerAura" || collision.tag == "ChargeLight")
         {
             spriteHighlight.enabled = false;
         }

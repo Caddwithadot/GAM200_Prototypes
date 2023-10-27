@@ -113,7 +113,7 @@ public class EnemyPatrolWithChase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "PlayerAura" || collision.tag == "Light" && mouseControls.kill)
+        if (collision.tag == "PlayerAura" || collision.tag == "ChargeLight" && mouseControls.kill)
         {
             isFollowingTarget = true;
             followTimer = followDuration;
@@ -122,7 +122,7 @@ public class EnemyPatrolWithChase : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "PlayerAura" || collision.tag == "Light" && mouseControls.kill)
+        if (collision.tag == "PlayerAura" || collision.tag == "ChargeLight" && mouseControls.kill)
         {
             isFollowingTarget = true;
             followTimer = followDuration;

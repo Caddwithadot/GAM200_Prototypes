@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class RayLightNEW : MonoBehaviour
+public class SuperRayLight : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
@@ -13,13 +13,14 @@ public class RayLightNEW : MonoBehaviour
     private float startingAngle;
 
     private PolygonCollider2D polygonCollider;
+    public RayLightEnergy energy;
 
     void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        fov = GetComponent<RayLightEnergy>().endAngle;
-        viewDistance = GetComponent<RayLightEnergy>().endDist;
+        fov = energy.endAngle;
+        viewDistance = energy.endDist;
 
         origin = Vector3.zero;
 
@@ -107,7 +108,7 @@ public class RayLightNEW : MonoBehaviour
     {
         dir = dir.normalized;
         float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if(n < 0)
+        if (n < 0)
         {
             n += 360;
         }

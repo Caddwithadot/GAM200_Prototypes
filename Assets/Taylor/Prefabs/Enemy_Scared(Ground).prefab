@@ -5206,6 +5206,7 @@ MonoBehaviour:
   - EnemyTriggers
   - PlayerAura
   - Collectibles
+  - ChargeLight
 --- !u!1 &6687552012639300883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5383,6 +5384,7 @@ MonoBehaviour:
   - EnemyTriggers
   - PlayerAura
   - Collectibles
+  - ChargeLight
 --- !u!1 &6687552013577330525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5496,6 +5498,7 @@ MonoBehaviour:
   - EnemyTriggers
   - PlayerAura
   - Collectibles
+  - ChargeLight
 --- !u!1 &6687552014115631326
 GameObject:
   m_ObjectHideFlags: 0

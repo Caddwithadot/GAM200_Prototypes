@@ -6,6 +6,7 @@ using UnityEngine;
 public class MouseControls : MonoBehaviour
 {
     [SerializeField] private RayLightNEW rayLight;
+    [SerializeField] private SuperRayLight superLight;
     private Transform player;
 
     public float interpolant = 20f;
@@ -50,6 +51,8 @@ public class MouseControls : MonoBehaviour
 
         rayLight.SetAimDirection(transform.right);
         rayLight.SetOrigin(transform.position);
+        superLight.SetAimDirection(transform.right);
+        superLight.SetOrigin(transform.position);
 
         if (canFocus)
         {

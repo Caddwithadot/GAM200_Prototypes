@@ -54,10 +54,13 @@ public class PlayerMovementNEW : MonoBehaviour
 
     private void Jump()
     {
-        rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
-        audioSource.PlayOneShot(jumpSound, 0.25f);
-        coyoteTimer = 0f;
-        juffTimer = 0f;
+        if(Time.timeScale > 0)
+        {
+            rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
+            audioSource.PlayOneShot(jumpSound, 0.25f);
+            coyoteTimer = 0f;
+            juffTimer = 0f;
+        }
     }
 
     private void FixedUpdate()
