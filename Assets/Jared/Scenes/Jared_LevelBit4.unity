@@ -1939,9 +1939,16 @@ MonoBehaviour:
   endDist: 12
   flashLightMat: {fileID: 2100000, guid: 0db10151c7a77da4b8de8c4cdd9cd5a0, type: 2}
   defaultColor: {r: 1, g: 1, b: 1, a: 0.29411766}
-  focusColor: {r: 1, g: 1, b: 1, a: 0.5882353}
+  superChargeColor: {r: 0, g: 0, b: 0, a: 0}
   timeUntilOverheat: 5
   timeOfCooldown: 3
+  focusSound: {fileID: 0}
+  unfocusSound: {fileID: 0}
+  chargeSound: {fileID: 0}
+  unchargeSound: {fileID: 0}
+  overheatStartOne: {fileID: 0}
+  overheatStartTwo: {fileID: 0}
+  overheated: {fileID: 0}
 --- !u!114 &331331860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4399,10 +4406,12 @@ MonoBehaviour:
   rayAura: {fileID: 1012178406}
   health: 4
   invFrameCooldown: 2
-  deathDelay: 0.5
   passHealDelay: 5
   lampHealDelay: 0.5
   maxAuraScale: 6
+  hitSound: {fileID: 0}
+  healSound: {fileID: 0}
+  sceneHandler: {fileID: 0}
 --- !u!114 &1490191644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4420,10 +4429,7 @@ MonoBehaviour:
   isGrounded: 0
   coyoteTime: 0.05
   juffTime: 0.15
-  walkSounds:
-  - {fileID: 8300000, guid: e3bb0e57862eccd4985f5298e811bafc, type: 3}
-  - {fileID: 8300000, guid: 35d152474ebf2ed479c725a6c69c2628, type: 3}
-  - {fileID: 8300000, guid: 0951a4bee25317847bc0c8f7334a6d01, type: 3}
+  walkSound: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: e055f0bf75d21024aa1c6bd921ca3003, type: 3}
   ignoreTags:
   - Light
