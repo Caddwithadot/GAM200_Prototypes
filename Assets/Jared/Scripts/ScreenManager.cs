@@ -6,41 +6,32 @@ using TMPro;
 
 public class ScreenManager : MonoBehaviour
 {
+    public AudioManager audioManager;
+
+    public bool FullScreenValue;
     public Toggle FullScreenToggle;
+
+    public int ResolutionValue;
     public TMP_Dropdown ResolutionDropdown;
 
     private void Start()
     {
-        bool isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1) == 1;
-        int resolutionChoice = PlayerPrefs.GetInt("ResolutionChoice", 0);
-
-        Screen.fullScreen = isFullscreen;
-        ChangeResolution(resolutionChoice);
-        FullScreenToggle.isOn = isFullscreen;
-        ResolutionDropdown.value = resolutionChoice;
-
-        Debug.Log("Full screen: " + isFullscreen + " - Resolution: " + resolutionChoice);
+        FullScreenToggle.isOn = PlayerPrefs.GetInt("IsFullScreen", 1) == 1;
+        ResolutionDropdown.value = PlayerPrefs.GetInt("ResolutionChoice", 0);
     }
 
     public void ToggleFullscreen(bool toggle)
     {
-        Screen.fullScreen = toggle;
-
-        PlayerPrefs.SetInt("IsFullscreen", toggle ? 1 : 0);
-        PlayerPrefs.Save();
-
-        if (toggle)
-            Debug.Log("Fullscreen on");
-        else
-            Debug.Log("Fullscreen off");
+        FullScreenValue = toggle;
+        Screen.fullScreen = FullScreenValue;
+        PlayerPrefs.SetInt("IsFullScreen", FullScreenValue ? 1 : 0);
     }
 
     public void ChangeResolution(int choice)
     {
-        int ScreenWidth = 0;
-        int ScreenHeight = 0;
+        ResolutionValue = choice;
 
-        switch (choice)
+        switch (ResolutionValue)
         {
             case 0:
                 Screen.SetResolution(1920, 1080, Screen.fullScreen);
@@ -63,9 +54,6 @@ public class ScreenManager : MonoBehaviour
                 break;
         }
 
-        Screen.SetResolution(ScreenWidth, ScreenHeight, Screen.fullScreen);
-
-        PlayerPrefs.SetInt("ResolutionChoice", choice);
-        PlayerPrefs.Save();
+        PlayerPrefs.SetInt("ResolutionChoice", ResolutionValue);
     }
 }

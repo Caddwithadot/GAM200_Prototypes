@@ -29,13 +29,13 @@ public class AudioManager : MonoBehaviour
         MusSliderAS = transform.GetChild(1).gameObject;
         SfxSliderAS = transform.GetChild(2).gameObject;
 
-        MasVolumeSlider.value = PlayerPrefs.GetFloat("Master");
-        MusVolumeSlider.value = PlayerPrefs.GetFloat("Music");
-        SfxVolumeSlider.value = PlayerPrefs.GetFloat("SFX");
+        MasVolumeSlider.value = PlayerPrefs.GetFloat("Master", -11f);
+        MusVolumeSlider.value = PlayerPrefs.GetFloat("Music", -11f);
+        SfxVolumeSlider.value = PlayerPrefs.GetFloat("SFX", -11f);
 
-        MasSliderAS.gameObject.SetActive(true);
-        MusSliderAS.gameObject.SetActive(true);
-        SfxSliderAS.gameObject.SetActive(true);
+        MasSliderAS.SetActive(true);
+        MusSliderAS.SetActive(true);
+        SfxSliderAS.SetActive(true);
     }
 
     void Update()
