@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RayLightStates : MonoBehaviour
 {
+    [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private MouseControls mouseControls;
     private RayLightNEW rayLight;
     public SuperRayLight superRayLight;
@@ -27,9 +28,11 @@ public class RayLightStates : MonoBehaviour
     public AudioClip unfocusSound;
 
     private bool isFocused = false;
+    private bool isKilling = true;
 
-    private bool currentlyFocusing = false;
-    private bool currentlyUnfocusing = false;
+    private bool finishedFocusing = false;
+    private bool finishedUnfocusing = false;
+    private bool finishedOverheating = false;
 
     private float focusCooldownTime = 0f;
     public float focusCooldown = 0.5f;
@@ -38,7 +41,16 @@ public class RayLightStates : MonoBehaviour
 
     public float focusSpeed = 150f;
     public float unfocusSpeed = 150f;
-    public float overheatSpeed = 15f;
+    public float overheatSpeed = 5f;
+    public float revertSpeed = 15f;
+
+    private bool overheatStunPlaying = false;
+
+    public Animator flickerAni;
+    public MeshRenderer superMesh;
+
+    private float time;
+
 
     private void Start()
     {
@@ -55,39 +67,36 @@ public class RayLightStates : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!mouseControls.focus && unfocusCooldownTime <= 0)
+        if (!mouseControls.focus && unfocusCooldownTime <= 0 || !finishedUnfocusing)
         {
-            UnfocusLight();
+            if (!overheatStunPlaying)
+            {
+                UnfocusLight();
+            }
         }
-        else if (mouseControls.focus && focusCooldownTime <= 0)
+        else if (mouseControls.focus && focusCooldownTime <= 0 || !finishedFocusing)
         {
-            FocusLight();
+            if (!overheatStunPlaying)
+            {
+                FocusLight();
+            }
         }
 
-        if (currentlyFocusing)
-        {
-            FocusLight();
-        }
-        else if(!currentlyFocusing && mouseControls.kill && unfocusCooldownTime <= 0)
+        if (mouseControls.kill && unfocusCooldownTime <= 0 && !finishedOverheating)
         {
             OverheatLight();
         }
-        else if (!mouseControls.kill )
+        else if (!mouseControls.kill || focusCooldownTime <= 0 || finishedOverheating)
         {
             RevertLight();
         }
 
-        if (currentlyUnfocusing)
-        {
-            UnfocusLight();
-        }
-
-        if (isFocused && unfocusCooldownTime > 0)
+        if (!isFocused && unfocusCooldownTime > 0)
         {
             unfocusCooldownTime -= Time.deltaTime;
         }
 
-        if (!isFocused && focusCooldownTime > 0)
+        if (isFocused && focusCooldownTime > 0)
         {
             focusCooldownTime -= Time.deltaTime;
         }
@@ -95,13 +104,18 @@ public class RayLightStates : MonoBehaviour
 
     public void UnfocusLight()
     {
-        if (isFocused)
+        if (!isFocused)
         {
             focusCooldownTime = focusCooldown;
 
+            currentSuperAngle = 0;
+            superRayLight.SetFOV(currentSuperAngle);
+            finishedOverheating = false;
+            isKilling = true;
+
             audioSource.PlayOneShot(unfocusSound);
-            currentlyUnfocusing = true;
-            isFocused = false;
+            finishedUnfocusing = false;
+            isFocused = true;
         }
 
         #region Unfocus lerp
@@ -121,24 +135,22 @@ public class RayLightStates : MonoBehaviour
         rayLight.SetViewDistance(currentDist);
         #endregion
 
-        currentSuperAngle = 0;
-        superRayLight.SetFOV(currentSuperAngle);
-
+        //fully unfocused
         if (currentDist == startDist && currentAngle == startAngle)
         {
-            currentlyUnfocusing = false;
+            finishedUnfocusing = true;
         }
     }
 
     public void FocusLight()
     {
-        if (!isFocused)
+        if (isFocused)
         {
             unfocusCooldownTime = unfocusCooldown;
 
             audioSource.PlayOneShot(focusSound);
-            currentlyFocusing = true;
-            isFocused = true;
+            finishedFocusing = false;
+            isFocused = false;
         }
 
         #region Focus lerp
@@ -156,16 +168,23 @@ public class RayLightStates : MonoBehaviour
 
         currentDist = Mathf.Lerp(currentDist, targetDist, stepDist);
         rayLight.SetViewDistance(currentDist);
-        #endregion 
+        #endregion
 
+        //fully focused
         if (currentDist == endDist && currentAngle == endAngle)
         {
-            currentlyFocusing = false;
+            finishedFocusing = true;
         }
     }
 
     public void OverheatLight()
     {
+        if (isKilling)
+        {
+            finishedOverheating = false;
+            isKilling = false;
+        }
+
         #region Overheat lerp
         float targetAngle = endAngle;
         float journeyLengthAngle = Mathf.Abs(targetAngle - currentSuperAngle);
@@ -174,19 +193,63 @@ public class RayLightStates : MonoBehaviour
 
         currentSuperAngle = Mathf.Lerp(currentSuperAngle, targetAngle, stepAngle);
         superRayLight.SetFOV(currentSuperAngle);
-        #endregion 
+        #endregion
+
+        //handle the flickering
+        if(currentSuperAngle >= (endAngle / 4) && currentSuperAngle < (endAngle / 3))
+        {
+            flickerAni.enabled = true;
+        }
+        else if(currentSuperAngle >= (endAngle / 2) && currentSuperAngle < (endAngle / 3) * 2)
+        {
+            flickerAni.enabled = true;
+        }
+        else
+        {
+            flickerAni.enabled = false;
+            superMesh.enabled = true;
+        }
+
+        time += Time.deltaTime;
+
+        //fully overheat
+        if (currentSuperAngle == endAngle)
+        {
+            Debug.Log("Time to overheat: " + time);
+
+            if (playerHealth.health > 1)
+            {
+                playerHealth.TakeDamage(1);
+            }
+            currentSuperAngle = 0;
+            superRayLight.SetFOV(currentSuperAngle);
+
+            //rayLight.SetFOV(startAngle * 1.5f);
+            //rayLight.SetViewDistance(endDist);
+
+            //overheatStunPlaying = true;
+            finishedOverheating = true;
+        }
     }
 
     public void RevertLight()
     {
+        if(!isKilling)
+        {
+            isKilling = true;
+        }
+
         #region Revert lerp
         float targetAngle = 0;
         float journeyLengthAngle = Mathf.Abs(targetAngle - currentSuperAngle);
 
-        float stepAngle = overheatSpeed / journeyLengthAngle * Time.deltaTime;
+        float stepAngle = revertSpeed / journeyLengthAngle * Time.deltaTime;
 
         currentSuperAngle = Mathf.Lerp(currentSuperAngle, targetAngle, stepAngle);
         superRayLight.SetFOV(currentSuperAngle);
         #endregion 
+
+        flickerAni.enabled = false;
+        superMesh.enabled = true;
     }
 }

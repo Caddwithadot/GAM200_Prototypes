@@ -96,16 +96,17 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             sr.color = Color.black;
-            rayAura.SetViewDistance(0.5f);
-            playerAura.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            rayAura.SetViewDistance(1f);
+            playerAura.transform.localScale = new Vector3(3f, 3f, 1);
         }
     }
 
     public void TakeDamage(int lostHealth)
     {
         invTimer = invFrameCooldown;
-
         health -= lostHealth;
+
+        audioSource.PlayOneShot(hitSound, 3);
 
         if (health <= 0)
         {
@@ -122,11 +123,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
-            if (health > 1)
-            {
-                audioSource.PlayOneShot(hitSound, 3);
-            }
-
             TakeDamage(1);
             healTimer = 0;
         }
@@ -136,11 +132,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
-            if (health > 1)
-            {
-                audioSource.PlayOneShot(hitSound, 3);
-            }
-
             TakeDamage(1);
             healTimer = 0;
         }

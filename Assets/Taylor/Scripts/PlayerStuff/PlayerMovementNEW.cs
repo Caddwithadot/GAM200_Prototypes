@@ -30,7 +30,7 @@ public class PlayerMovementNEW : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
             juffTimer = juffTime;
 

@@ -20,7 +20,7 @@ public class Lamp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && mouseControls.kill)
+        if (collision.tag == "ChargeLight" && mouseControls.kill)
         {
             TurnOn();
         }
@@ -28,7 +28,7 @@ public class Lamp : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && mouseControls.kill)
+        if (collision.tag == "ChargeLight" && mouseControls.kill)
         {
             TurnOn();
         }

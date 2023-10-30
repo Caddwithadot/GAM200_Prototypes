@@ -18,8 +18,8 @@ public class RayLightNEW : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        fov = GetComponent<RayLightEnergy>().endAngle;
-        viewDistance = GetComponent<RayLightEnergy>().endDist;
+        fov = GetComponent<RayLightStates>().endAngle;
+        viewDistance = GetComponent<RayLightStates>().endDist;
 
         origin = Vector3.zero;
 

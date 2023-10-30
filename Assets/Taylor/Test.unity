@@ -201,13 +201,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Scared(Ground)
       objectReference: {fileID: 0}
+    - target: {fileID: 6687552012887618018, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6687552012887618019, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6687552012887618019, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.99
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 6687552012887618019, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -247,6 +251,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ad3c958fd117742b74d19489481fe4, type: 3}
+--- !u!1 &478538202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 478538203}
+  - component: {fileID: 478538204}
+  m_Layer: 0
+  m_Name: FlashlightFill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &478538203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478538202}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.95, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1097854680}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &478538204
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478538202}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 12
+  m_Sprite: {fileID: 21300000, guid: 49d9a29f78518b04996eda0b8d58b03c, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &563017327
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,13 +676,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1045829157}
   - component: {fileID: 1045829162}
-  - component: {fileID: 1045829163}
   - component: {fileID: 1045829167}
-  - component: {fileID: 1045829165}
   - component: {fileID: 1045829159}
   - component: {fileID: 1045829158}
   - component: {fileID: 1045829161}
-  - component: {fileID: 1045829164}
   - component: {fileID: 1045829166}
   m_Layer: 0
   m_Name: RayLight
@@ -709,71 +794,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &1045829163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045829156}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c31cb0f2490c5ec4681fa1173fdde9b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1271311802}
-  mouseControls: {fileID: 938619698}
-  startAngle: 45
-  startDist: 4
-  endAngle: 8
-  endDist: 12
-  flashLightMat: {fileID: 2100000, guid: 0db10151c7a77da4b8de8c4cdd9cd5a0, type: 2}
-  defaultColor: {r: 1, g: 1, b: 1, a: 0.29411766}
-  superChargeColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-  timeUntilOverheat: 5
-  timeOfCooldown: 3
-  focusSound: {fileID: 8300000, guid: ec6da29f75c0f7f47855359069930f7b, type: 3}
-  unfocusSound: {fileID: 0}
-  chargeSound: {fileID: 8300000, guid: db1b1c0e964cb6f418bfe62ec4a9dd55, type: 3}
-  unchargeSound: {fileID: 0}
-  overheatStartOne: {fileID: 8300000, guid: cd12846da27f18245ba668b15ec9e29e, type: 3}
-  overheatStartTwo: {fileID: 8300000, guid: 6c040836c00ea2a4fa591f9a742db026, type: 3}
-  overheated: {fileID: 8300000, guid: 98ebe4dd8fcde914f928c00cc4fdf8ac, type: 3}
---- !u!95 &1045829164
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045829156}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c0339bead4b6e4846841eb725cbd0125, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1045829165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045829156}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51b6b25a4d490fe43ab85ed578693289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseControls: {fileID: 938619698}
-  cooldownTime: 1
-  playerHealth: {fileID: 1271311802}
 --- !u!82 &1045829166
 AudioSource:
   m_ObjectHideFlags: 0
@@ -882,6 +902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b0c7ff777317349924f034a2193785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1271311802}
   mouseControls: {fileID: 938619698}
   superRayLight: {fileID: 1307297633}
   startAngle: 45
@@ -892,12 +913,15 @@ MonoBehaviour:
   defaultColor: {r: 1, g: 1, b: 1, a: 0.29411766}
   superChargeColor: {r: 1, g: 1, b: 1, a: 0.5882353}
   focusSound: {fileID: 8300000, guid: ec6da29f75c0f7f47855359069930f7b, type: 3}
-  unfocusSound: {fileID: 8300000, guid: 83636a8375cc98c4b9e27e137420784e, type: 3}
+  unfocusSound: {fileID: 0}
   focusCooldown: 0.3
   unfocusCooldown: 0.3
-  focusSpeed: 150
+  focusSpeed: 300
   unfocusSpeed: 150
-  overheatSpeed: 10
+  overheatSpeed: 1.78
+  revertSpeed: 18
+  flickerAni: {fileID: 1307297634}
+  superMesh: {fileID: 1307297629}
 --- !u!1 &1097854679
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +933,7 @@ GameObject:
   - component: {fileID: 1097854680}
   - component: {fileID: 1097854681}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: FlashlightOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,7 +950,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.03, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 478538203}
   m_Father: {fileID: 938619697}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -972,7 +997,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 49d9a29f78518b04996eda0b8d58b03c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1136,6 +1161,10 @@ PrefabInstance:
     - target: {fileID: 319107905376744332, guid: bb6870b848bef4543814c5cfea5fe30f, type: 3}
       propertyPath: m_Name
       value: Enemy_Chase(Ground)
+      objectReference: {fileID: 0}
+    - target: {fileID: 319107905376744332, guid: bb6870b848bef4543814c5cfea5fe30f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 319107905376744333, guid: bb6870b848bef4543814c5cfea5fe30f, type: 3}
       propertyPath: m_RootOrder
@@ -1525,6 +1554,7 @@ GameObject:
   - component: {fileID: 1307297630}
   - component: {fileID: 1307297629}
   - component: {fileID: 1307297632}
+  - component: {fileID: 1307297634}
   m_Layer: 0
   m_Name: SuperRayLight
   m_TagString: ChargeLight
@@ -1642,7 +1672,27 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
-  energy: {fileID: 1045829163}
+  energy: {fileID: 1045829167}
+--- !u!95 &1307297634
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307297626}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b6c2dd6fdfd3e741ab7e9b5f7a4ffee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1367358372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,7 +2114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2141612816
 Transform:
   m_ObjectHideFlags: 0
@@ -5847,6 +5897,10 @@ PrefabInstance:
     - target: {fileID: 3359745231592709283, guid: 9cb5f929146b1ca40ba26babd926712d, type: 3}
       propertyPath: m_Name
       value: Enemy_Patrol(Ground)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359745231592709283, guid: 9cb5f929146b1ca40ba26babd926712d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb5f929146b1ca40ba26babd926712d, type: 3}

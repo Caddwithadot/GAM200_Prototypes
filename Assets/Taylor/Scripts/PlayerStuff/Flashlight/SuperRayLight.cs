@@ -13,7 +13,7 @@ public class SuperRayLight : MonoBehaviour
     private float startingAngle;
 
     private PolygonCollider2D polygonCollider;
-    public RayLightEnergy energy;
+    public RayLightStates energy;
 
     void Start()
     {
