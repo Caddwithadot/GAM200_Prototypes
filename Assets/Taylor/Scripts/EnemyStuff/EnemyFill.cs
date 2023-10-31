@@ -11,14 +11,14 @@ public class EnemyFill : MonoBehaviour
     public Transform playerTrigger;
 
     private Rigidbody2D rb;
-    private Animator anim;
     public SpriteRenderer sr;
     private ParticleSystem ps;
+    private Animator anim;
 
     private MonoBehaviour[] scriptsOnEnemy;
 
-    public float fillSpeed = 0.5f;
-    public float revertSpeed = 2f;
+    public float fillSpeed = 0.25f;
+    public float revertSpeed = 1f;
 
     private bool startFill = false;
     private bool startRevert = false;
@@ -31,14 +31,16 @@ public class EnemyFill : MonoBehaviour
     private Vector2 currentSize;
     public Vector2 targetSize;
 
+    private bool filled = false;
+
     private void Start()
     {
         scriptsOnEnemy = enemy.GetComponents<MonoBehaviour>();
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
 
         rb = enemy.GetComponent<Rigidbody2D>();
-        anim = enemy.GetComponent<Animator>();
         ps = GetComponent<ParticleSystem>();
+        anim = GetComponent<Animator>();
 
         startColor = sr.color;
         startSize = transform.localScale;
@@ -46,34 +48,17 @@ public class EnemyFill : MonoBehaviour
 
     private void Update()
     {
-        if (startFill)
+        currentColor = sr.color;
+        currentSize = transform.localScale;
+
+        if (startFill && !filled)
         {
             Fill();
         }
 
-        if (startRevert && currentColor != startColor)
+        if (startRevert && currentColor != startColor && !filled)
         {
             Revert();
-        }
-
-        currentColor = sr.color;
-        currentSize = transform.localScale;
-
-        if( currentColor == targetColor)
-        {
-            rb.isKinematic = true;
-            GetComponent<BoxCollider2D>().enabled = false;
-            playerTrigger.GetComponent<BoxCollider2D>().enabled = false;
-
-            //anim.SetTrigger("Pop");
-            //ps.Play();
-
-            foreach(var script in scriptsOnEnemy)
-            {
-                script.enabled = false;
-            }
-
-            GetComponent<EnemyFill>().enabled = false;
         }
     }
 
@@ -91,6 +76,12 @@ public class EnemyFill : MonoBehaviour
 
     public void Fill()
     {
+        if (!ps.isPlaying)
+        {
+            ps.Play();
+        }
+
+        #region Fill lerp
         float journeyLengthScale = Mathf.Abs(targetSize.x - currentSize.x);
         float stepScale = fillSpeed / journeyLengthScale * Time.deltaTime;
 
@@ -98,10 +89,29 @@ public class EnemyFill : MonoBehaviour
         transform.localScale = new Vector2(newSize, newSize);
 
         sr.color = Color.Lerp(currentColor, targetColor, stepScale);
+        #endregion
+
+        if (currentColor == targetColor)
+        {
+            ps.Stop();
+            anim.enabled = true;
+            rb.gravityScale = 0.5f;
+            GetComponent<BoxCollider2D>().enabled = false;
+            playerTrigger.GetComponent<BoxCollider2D>().enabled = false;
+
+            foreach (var script in scriptsOnEnemy)
+            {
+                script.enabled = false;
+            }
+
+            filled = true;
+            GetComponent<EnemyFill>().enabled = false;
+        }
     }
 
     public void Revert()
     {
+        #region Revert lerp
         float journeyLengthScale = Mathf.Abs(startSize.x - currentSize.x);
         float stepScale = revertSpeed / journeyLengthScale * Time.deltaTime;
 
@@ -109,6 +119,12 @@ public class EnemyFill : MonoBehaviour
         transform.localScale = new Vector2(newSize, newSize);
 
         sr.color = Color.Lerp(currentColor, startColor, stepScale);
+        #endregion
+
+        if (ps.isPlaying)
+        {
+            ps.Stop();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

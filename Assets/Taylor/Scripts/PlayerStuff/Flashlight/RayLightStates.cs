@@ -39,16 +39,14 @@ public class RayLightStates : MonoBehaviour
     private bool finishedOverheating = false;
 
     private float focusCooldownTime = 0f;
-    public float focusCooldown = 0.5f;
+    public float focusCooldown = 0.3f;
     private float unfocusCooldownTime = 0f;
-    public float unfocusCooldown = 0.5f;
+    public float unfocusCooldown = 0.3f;
 
-    public float focusSpeed = 150f;
+    public float focusSpeed = 300f;
     public float unfocusSpeed = 150f;
-    public float overheatSpeed = 5f;
-    public float revertSpeed = 15f;
-
-    private bool overheatStunPlaying = false;
+    public float overheatSpeed = 2f;
+    public float revertSpeed = 18f;
 
     public Animator flickerAni;
     public MeshRenderer superMesh;
@@ -73,20 +71,14 @@ public class RayLightStates : MonoBehaviour
     {
         if (!mouseControls.focus && unfocusCooldownTime <= 0 || !finishedUnfocusing)
         {
-            if (!overheatStunPlaying)
-            {
-                UnfocusLight();
-            }
+            UnfocusLight();
         }
         else if (mouseControls.focus && focusCooldownTime <= 0 || !finishedFocusing)
         {
-            if (!overheatStunPlaying)
-            {
-                FocusLight();
-            }
+            FocusLight();
         }
 
-        if (mouseControls.kill && unfocusCooldownTime <= 0 && !finishedOverheating)
+        if (mouseControls.kill && unfocusCooldownTime <= 0)
         {
             OverheatLight();
         }
@@ -123,6 +115,7 @@ public class RayLightStates : MonoBehaviour
         }
 
         superAudioSource.enabled = false;
+        otherSource.enabled = false;
         #region Unfocus lerp
         float targetAngle = startAngle;
         float targetDist = startDist;
@@ -235,10 +228,7 @@ public class RayLightStates : MonoBehaviour
 
             audioSource.PlayOneShot(overheat, 3f);
 
-            //rayLight.SetFOV(startAngle * 1.5f);
-            //rayLight.SetViewDistance(endDist);
-
-            //overheatStunPlaying = true;
+            
             finishedOverheating = true;
         }
     }
@@ -252,6 +242,7 @@ public class RayLightStates : MonoBehaviour
         }
 
         superAudioSource.enabled = false;
+        otherSource.enabled = false;
         #region Revert lerp
         float targetAngle = 0;
         float journeyLengthAngle = Mathf.Abs(targetAngle - currentSuperAngle);
