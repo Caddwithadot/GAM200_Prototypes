@@ -9,10 +9,7 @@ public class PlaytestSceneTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if(SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                SceneManager.LoadScene(0);
-            }
+            SceneManager.LoadScene(0);
         }
     }
 }

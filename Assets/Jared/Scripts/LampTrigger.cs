@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class LampTrigger : MonoBehaviour
 {
     private MouseControls mouseControls;
     public Transform Light;
     public GameObject Door;
+    public Color LitCableColor;
+    public Tilemap Cable;
     public Vector3 MinScale = new Vector3(0f, 0f, 0f);
     public Vector3 MaxScale = new Vector3(0.5f, 0.5f, 0f);
     public Vector3 ScaleIncrement = new Vector3(0.002f, 0.002f, 0f);
@@ -89,6 +92,7 @@ public class LampTrigger : MonoBehaviour
     public void FullyLitUp()
     {
         Light.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.5f, 1f, 1f, 0.4f);
+        Cable.color = LitCableColor;
 
         for (int i = 0; i < Door.transform.childCount; i++)
         {
