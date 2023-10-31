@@ -106,8 +106,6 @@ public class PlayerHealth : MonoBehaviour
         invTimer = invFrameCooldown;
         health -= lostHealth;
 
-        audioSource.PlayOneShot(hitSound, 3);
-
         if (health <= 0)
         {
             sceneHandler.PlayerDeathReload();
@@ -123,6 +121,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
+            audioSource.PlayOneShot(hitSound, 3f);
             TakeDamage(1);
             healTimer = 0;
         }
@@ -132,6 +131,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
+            audioSource.PlayOneShot(hitSound, 3f);
             TakeDamage(1);
             healTimer = 0;
         }

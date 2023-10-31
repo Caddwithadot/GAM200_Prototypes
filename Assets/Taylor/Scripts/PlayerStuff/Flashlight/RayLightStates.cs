@@ -24,8 +24,12 @@ public class RayLightStates : MonoBehaviour
     public Color superChargeColor;
 
     private AudioSource audioSource;
+    public AudioSource otherSource;
+    public AudioSource superAudioSource;
     public AudioClip focusSound;
-    public AudioClip unfocusSound;
+    public AudioClip revertSound;
+    public AudioClip flicker;
+    public AudioClip overheat;
 
     private bool isFocused = false;
     private bool isKilling = true;
@@ -113,11 +117,12 @@ public class RayLightStates : MonoBehaviour
             finishedOverheating = false;
             isKilling = true;
 
-            audioSource.PlayOneShot(unfocusSound);
+            //audioSource.PlayOneShot(unfocusSound);
             finishedUnfocusing = false;
             isFocused = true;
         }
 
+        superAudioSource.enabled = false;
         #region Unfocus lerp
         float targetAngle = startAngle;
         float targetDist = startDist;
@@ -148,7 +153,7 @@ public class RayLightStates : MonoBehaviour
         {
             unfocusCooldownTime = unfocusCooldown;
 
-            audioSource.PlayOneShot(focusSound);
+            audioSource.PlayOneShot(focusSound, 1);
             finishedFocusing = false;
             isFocused = false;
         }
@@ -185,6 +190,7 @@ public class RayLightStates : MonoBehaviour
             isKilling = false;
         }
 
+        superAudioSource.enabled = true;
         #region Overheat lerp
         float targetAngle = endAngle;
         float journeyLengthAngle = Mathf.Abs(targetAngle - currentSuperAngle);
@@ -196,18 +202,21 @@ public class RayLightStates : MonoBehaviour
         #endregion
 
         //handle the flickering
-        if(currentSuperAngle >= (endAngle / 4) && currentSuperAngle < (endAngle / 3))
+        if (currentSuperAngle >= (endAngle / 4) && currentSuperAngle < (endAngle / 3))
         {
             flickerAni.enabled = true;
+            otherSource.enabled = true;
         }
-        else if(currentSuperAngle >= (endAngle / 2) && currentSuperAngle < (endAngle / 3) * 2)
+        else if (currentSuperAngle >= (endAngle / 2) && currentSuperAngle < (endAngle / 3) * 2)
         {
             flickerAni.enabled = true;
+            otherSource.enabled = true;
         }
         else
         {
             flickerAni.enabled = false;
             superMesh.enabled = true;
+            otherSource.enabled = false;
         }
 
         time += Time.deltaTime;
@@ -224,6 +233,8 @@ public class RayLightStates : MonoBehaviour
             currentSuperAngle = 0;
             superRayLight.SetFOV(currentSuperAngle);
 
+            audioSource.PlayOneShot(overheat, 3f);
+
             //rayLight.SetFOV(startAngle * 1.5f);
             //rayLight.SetViewDistance(endDist);
 
@@ -234,11 +245,13 @@ public class RayLightStates : MonoBehaviour
 
     public void RevertLight()
     {
-        if(!isKilling)
+        if (!isKilling)
         {
             isKilling = true;
+            audioSource.PlayOneShot(revertSound, 0.25f);
         }
 
+        superAudioSource.enabled = false;
         #region Revert lerp
         float targetAngle = 0;
         float journeyLengthAngle = Mathf.Abs(targetAngle - currentSuperAngle);
