@@ -28,6 +28,8 @@ public class LightTile : MonoBehaviour
     {
         if(collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
         {
+            Debug.Log(collision.tag);
+
             foreach(SpriteRenderer renderer in tiles)
             {
                 renderer.color = new Color(0, 0, 0, 0f);
@@ -41,7 +43,7 @@ public class LightTile : MonoBehaviour
         {
             foreach (SpriteRenderer renderer in tiles)
             {
-                renderer.color = new Color(0, 0, 0, 0.5f);
+                renderer.color = new Color(0, 0, 0, 0.8f);
             }
         }
     }

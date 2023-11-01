@@ -74,7 +74,7 @@ public class PlayerMovementNEW : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Environment")
+        if (collision.tag == "Environment" || collision.tag == "Tile")
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
@@ -83,7 +83,7 @@ public class PlayerMovementNEW : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Environment")
+        if (collision.tag == "Environment" || collision.tag == "Tile")
         {
             isGrounded = false;
         }
