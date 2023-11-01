@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="85" height="49" tilewidth="64" tileheight="64" infinite="0" nextlayerid="18" nextobjectid="420">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="85" height="49" tilewidth="64" tileheight="64" infinite="0" nextlayerid="21" nextobjectid="422">
  <editorsettings>
   <export target="../../../../../../Downloads/LevelBit4_64x64.json" format="json"/>
  </editorsettings>
@@ -511,6 +511,7 @@
  </layer>
  <objectgroup color="#00ff00" id="8" name="Colliders">
   <properties>
+   <property name="unity:Tag" value="Environment"/>
    <property name="unity:layer" value="Environment"/>
   </properties>
   <object id="279" x="4992" y="256" width="64" height="384"/>
@@ -597,9 +598,17 @@
  </objectgroup>
  <objectgroup color="#ff0000" id="10" name="Hazards">
   <properties>
+   <property name="name" value="hazards"/>
    <property name="unity:Tag" value="Hazards"/>
   </properties>
   <object id="355" x="256" y="2972" width="832" height="36"/>
   <object id="356" x="1536" y="2972" width="576" height="36"/>
  </objectgroup>
+ <objectgroup color="#ff00ff" id="19" name="Exit">
+  <properties>
+   <property name="name" value="exit"/>
+  </properties>
+  <object id="421" x="1792" y="576" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="20" name="Lamps"/>
 </map>

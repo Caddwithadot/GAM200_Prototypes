@@ -12,7 +12,7 @@ public class TileTest : MonoBehaviour
     public Vector3 bottomLeft; // Define these positions or assign them in the Inspector.
     public Vector3 topRight;   // Define these positions or assign them in the Inspector.
 
-    private Vector3 tileOffset = new Vector3(0.25f, 0.25f, 0f);
+    public Vector3 tileOffset = new Vector3(0.25f, 0.25f, 0f);
 
     // Start is called before the first frame update
     void Start()
