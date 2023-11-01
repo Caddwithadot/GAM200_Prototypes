@@ -18,6 +18,7 @@ TagManager:
   - Hazards
   - Collectibles
   - ChargeLight
+  - Tile
   layers:
   - Default
   - TransparentFX
