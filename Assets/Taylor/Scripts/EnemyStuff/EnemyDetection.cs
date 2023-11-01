@@ -5,11 +5,10 @@ using UnityEngine;
 public class EnemyDetection : MonoBehaviour
 {
     public bool detected;
-    public List<string> ignoreTags;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!ignoreTags.Contains(collision.tag))
+        if (collision.tag == "Environment")
         {
             detected = true;
         }
@@ -17,7 +16,7 @@ public class EnemyDetection : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!ignoreTags.Contains(collision.tag))
+        if (collision.tag == "Environment")
         {
             detected = false;
         }

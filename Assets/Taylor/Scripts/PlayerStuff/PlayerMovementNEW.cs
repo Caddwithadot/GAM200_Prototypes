@@ -18,7 +18,6 @@ public class PlayerMovementNEW : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip walkSound;
     public AudioClip jumpSound;
-    public List<string> ignoreTags;
 
     void Start()
     {
@@ -75,7 +74,7 @@ public class PlayerMovementNEW : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!ignoreTags.Contains(collision.tag))
+        if (collision.tag == "Environment")
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
@@ -84,7 +83,7 @@ public class PlayerMovementNEW : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!ignoreTags.Contains(collision.tag))
+        if (collision.tag == "Environment")
         {
             isGrounded = false;
         }

@@ -765,6 +765,7 @@ MonoBehaviour:
   - EnemyTriggers
   - PlayerAura
   - ChargeLight
+  - Tile
 --- !u!114 &8254322375258232391
 MonoBehaviour:
   m_ObjectHideFlags: 0
