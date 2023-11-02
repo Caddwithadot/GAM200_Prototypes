@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public GameObject[] Rooms;
+    public Transform Colliders;
+    public Transform Hazards;
 
     void Start()
     {
@@ -15,10 +17,14 @@ public class LevelManager : MonoBehaviour
             Rooms[i].AddComponent<JumpThroughParent>();
         }
 
-
-        for (int i = 0; i < GameObject.FindGameObjectWithTag("Hazards").transform.childCount; i++)
+        for (int i = 0; i < Colliders.childCount; i++)
         {
-            GameObject.FindGameObjectWithTag("Hazards").transform.GetChild(i).tag = "Enemy";
+            Colliders.GetChild(i).gameObject.tag = "Environment";
+        }
+
+        for (int i = 0; i < Hazards.childCount; i++)
+        {
+            Hazards.GetChild(i).gameObject.tag = "Enemy";
         }
     }
 }
