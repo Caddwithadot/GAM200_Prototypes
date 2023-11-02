@@ -5,13 +5,18 @@ using UnityEngine.UIElements;
 
 public class LightTile : MonoBehaviour
 {
+    private SpriteRenderer tile;
     private List<SpriteRenderer> tiles = new List<SpriteRenderer>();
     private Vector2 overlapSize = new Vector2(1.0f, 1.0f);
     public LayerMask tileLayer;
 
+    public float lightAlpha = 0f;
+    public float darkAlpha = 1f;
+
     private void Start()
     {
-        tiles.Add(GetComponent<SpriteRenderer>());
+        tile = GetComponent<SpriteRenderer>();
+        tiles.Add(tile);
 
         Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, overlapSize, 0.0f, tileLayer);
 
@@ -28,12 +33,13 @@ public class LightTile : MonoBehaviour
     {
         if(collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
         {
-            Debug.Log(collision.tag);
-
+            tile.color = new Color(0, 0, 0, lightAlpha);
+            /*
             foreach(SpriteRenderer renderer in tiles)
             {
-                renderer.color = new Color(0, 0, 0, 0f);
+                renderer.color = lightColor;
             }
+            */
         }
     }
 
@@ -41,10 +47,13 @@ public class LightTile : MonoBehaviour
     {
         if (collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
         {
+            tile.color = new Color(0, 0, 0, darkAlpha);
+            /*
             foreach (SpriteRenderer renderer in tiles)
             {
-                renderer.color = new Color(0, 0, 0, 0.8f);
+                renderer.color = darkColor;
             }
+            */
         }
     }
 }

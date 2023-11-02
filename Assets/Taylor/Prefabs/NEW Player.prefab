@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 8254322375160380573}
   - component: {fileID: 8254322375160380575}
   - component: {fileID: 8254322375160380574}
+  - component: {fileID: 818740755690376614}
   m_Layer: 0
   m_Name: SuperRayLight
   m_TagString: ChargeLight
@@ -478,6 +479,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &818740755690376614
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254322375160380583}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8254322375258232394
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,15 +779,6 @@ MonoBehaviour:
   juffTime: 0.15
   walkSound: {fileID: 8300000, guid: e3bb0e57862eccd4985f5298e811bafc, type: 3}
   jumpSound: {fileID: 8300000, guid: e055f0bf75d21024aa1c6bd921ca3003, type: 3}
-  ignoreTags:
-  - Light
-  - Aura
-  - Enemy
-  - Player
-  - EnemyTriggers
-  - PlayerAura
-  - ChargeLight
-  - Tile
 --- !u!114 &8254322375258232391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,6 +871,7 @@ GameObject:
   - component: {fileID: 8254322375746267514}
   - component: {fileID: 8254322375746267515}
   - component: {fileID: 8254322375746267512}
+  - component: {fileID: 137399106558640883}
   m_Layer: 0
   m_Name: RayAura
   m_TagString: PlayerAura
@@ -972,6 +986,27 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - []
+--- !u!50 &137399106558640883
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254322375746267518}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8254322375994347762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1390,7 @@ GameObject:
   - component: {fileID: 8254322377077550548}
   - component: {fileID: 8254322377077550541}
   - component: {fileID: 8254322377077550547}
+  - component: {fileID: 634753838047818136}
   m_Layer: 0
   m_Name: RayLight
   m_TagString: Light
@@ -1696,6 +1732,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &634753838047818136
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254322377077550553}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8269993738952676021
 GameObject:
   m_ObjectHideFlags: 0

@@ -217,8 +217,6 @@ public class RayLightStates : MonoBehaviour
         //fully overheat
         if (currentSuperAngle == endAngle)
         {
-            Debug.Log("Time to overheat: " + time);
-
             if (playerHealth.health > 1)
             {
                 playerHealth.TakeDamage(1);
