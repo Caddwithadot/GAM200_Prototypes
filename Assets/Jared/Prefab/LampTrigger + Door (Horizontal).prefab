@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3289583274722837523}
   - component: {fileID: 3289583274722837520}
   - component: {fileID: 3289583274722837521}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorTile (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3289583274851058990}
   - component: {fileID: 5565068622204054577}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 3289583274907615333}
   - component: {fileID: 3289583274907615330}
   - component: {fileID: 3289583274907615331}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorTile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 3289583275248695140}
   - component: {fileID: 3289583275248695141}
   - component: {fileID: 3289583275248695138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LampTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,6 +498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Light: {fileID: 0}
   Door: {fileID: 0}
+  LitCableColor: {r: 0, g: 0, b: 0, a: 0}
+  Cable: {fileID: 0}
   MinScale: {x: 0, y: 0, z: 0}
   MaxScale: {x: 0.5, y: 0.5, z: 0}
   ScaleIncrement: {x: 0.01, y: 0.01, z: 0}
@@ -506,7 +508,8 @@ MonoBehaviour:
   LightDownTimer: 0
   LightDownTime: 1
   DoorOpenSFX: {fileID: 8300000, guid: 0e6a3615765cd0e4bac2bfd4e5d0131a, type: 3}
-  DoorAS: {fileID: 0}
+  DoorParent: {fileID: 0}
+  SFXPlayed: 0
 --- !u!61 &3289583275248695141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -566,7 +569,7 @@ GameObject:
   - component: {fileID: 3289583275256700487}
   - component: {fileID: 3289583275256700484}
   - component: {fileID: 3289583275256700485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3289583275603461222}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LampTrigger + Door (Horizontal)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +734,7 @@ GameObject:
   - component: {fileID: 3289583275845833103}
   - component: {fileID: 3289583275845833100}
   - component: {fileID: 3289583275845833101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorTile (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3289583275910365695}
   - component: {fileID: 3289583275910365694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

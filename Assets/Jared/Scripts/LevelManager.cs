@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     public GameObject[] Rooms;
     public Transform Colliders;
     public Transform Hazards;
+    public Transform JumpThroughs;
 
     void Start()
     {
@@ -25,6 +26,11 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < Hazards.childCount; i++)
         {
             Hazards.GetChild(i).gameObject.tag = "Enemy";
+        }
+
+        for (int i = 0; i < JumpThroughs.childCount; i++)
+        {
+            JumpThroughs.GetChild(i).gameObject.tag = "JumpThrough";
         }
     }
 }
