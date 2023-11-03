@@ -13,33 +13,48 @@ public class LightTile : MonoBehaviour
     public float lightAlpha = 0f;
     public float darkAlpha = 1f;
 
+    private float lightTime = 0f;
+    public float lightDelay = 0.5f;
+
+    private bool checkLight = false;
+
     private void Start()
     {
         tile = GetComponent<SpriteRenderer>();
         tiles.Add(tile);
+    }
 
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, overlapSize, 0.0f, tileLayer);
-
-        foreach(Collider2D collider in colliders)
+    private void Update()
+    {
+        if (checkLight)
         {
-            if(collider.gameObject != null && collider.gameObject.tag == "Tile")
+            lightTime -= Time.deltaTime;
+
+            if(lightTime <= 0)
             {
-                tiles.Add(collider.GetComponent<SpriteRenderer>());
+                Dark();
             }
         }
+    }
+
+    public void Light()
+    {
+        tile.color = new Color(0, 0, 0, lightAlpha);
+    }
+
+    public void Dark()
+    {
+        tile.color = new Color(0, 0, 0, darkAlpha);
+
+        checkLight = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
         {
-            tile.color = new Color(0, 0, 0, lightAlpha);
-            /*
-            foreach(SpriteRenderer renderer in tiles)
-            {
-                renderer.color = lightColor;
-            }
-            */
+            lightTime = lightDelay;
+            Light();
         }
     }
 
@@ -47,13 +62,7 @@ public class LightTile : MonoBehaviour
     {
         if (collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
         {
-            tile.color = new Color(0, 0, 0, darkAlpha);
-            /*
-            foreach (SpriteRenderer renderer in tiles)
-            {
-                renderer.color = darkColor;
-            }
-            */
+            checkLight = true;
         }
     }
 }
