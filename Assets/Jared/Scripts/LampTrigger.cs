@@ -76,7 +76,7 @@ public class LampTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && mouseControls.kill )
+        if (collision.tag == "Light" && mouseControls.kill)
         {
             LightUp();
 
