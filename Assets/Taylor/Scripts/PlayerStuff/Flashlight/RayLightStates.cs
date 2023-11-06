@@ -146,7 +146,7 @@ public class RayLightStates : MonoBehaviour
         {
             unfocusCooldownTime = unfocusCooldown;
 
-            audioSource.PlayOneShot(focusSound, 1);
+            audioSource.PlayOneShot(focusSound, 0.75f);
             finishedFocusing = false;
             isFocused = false;
         }
@@ -224,7 +224,7 @@ public class RayLightStates : MonoBehaviour
             currentSuperAngle = 0;
             superRayLight.SetFOV(currentSuperAngle);
 
-            audioSource.PlayOneShot(overheat, 3f);
+            audioSource.PlayOneShot(overheat, 2f);
 
             
             finishedOverheating = true;

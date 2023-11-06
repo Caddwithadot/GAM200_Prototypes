@@ -56,7 +56,7 @@ public class PlayerMovementNEW : MonoBehaviour
         if(Time.timeScale > 0)
         {
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
-            audioSource.PlayOneShot(jumpSound, 0.25f);
+            audioSource.PlayOneShot(jumpSound, 0.2f);
             coyoteTimer = 0f;
             juffTimer = 0f;
         }
@@ -68,7 +68,7 @@ public class PlayerMovementNEW : MonoBehaviour
 
         if(horizontalInput != 0 && isGrounded && !audioSource.isPlaying)
         {
-            audioSource.PlayOneShot(walkSound, 0.25f);
+            audioSource.PlayOneShot(walkSound, 0.2f);
         }
     }
 

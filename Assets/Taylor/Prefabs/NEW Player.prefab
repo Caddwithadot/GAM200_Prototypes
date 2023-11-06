@@ -395,7 +395,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4623610236681463786, guid: f62ee4f6096d42740b6c5c86ffd2b5be, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9b93d1baf77b7e54db1ee0e93a9684ee, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -791,7 +791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32782de4293e1524f9cf0abbb47199d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAura: {fileID: 8254322375994347762}
   rayAura: {fileID: 8254322375746267509}
   health: 4
   invFrameCooldown: 1.5

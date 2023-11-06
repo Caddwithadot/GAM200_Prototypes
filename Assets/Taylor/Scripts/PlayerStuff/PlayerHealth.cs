@@ -9,8 +9,6 @@ public class PlayerHealth : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sr;
 
-    public GameObject playerAura;
-
     public RayAura rayAura;
 
     public int health = 4;
@@ -66,21 +64,6 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        /*
-        // passive healing
-        if(health < maxHealth - 1)
-        {
-            healTimer += Time.deltaTime;
-
-            if (healTimer >= passHealDelay)
-            {
-                health++;
-
-                healTimer = 0f;
-            }
-        }
-        */
-
         float auraDifference = maxAuraScale / maxHealth;
         float auraScale = health * auraDifference;
 
@@ -91,13 +74,11 @@ public class PlayerHealth : MonoBehaviour
         {
             sr.color = new Color((auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale);
             rayAura.SetViewDistance((auraScale + 1.5f) / 3);
-            playerAura.transform.localScale = new Vector3(auraScale + 1.5f, auraScale + 1.5f, 1);
         }
         else
         {
             sr.color = Color.black;
             rayAura.SetViewDistance(1f);
-            playerAura.transform.localScale = new Vector3(3f, 3f, 1);
         }
     }
 

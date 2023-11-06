@@ -4231,6 +4231,7 @@ MonoBehaviour:
   TileParent: {fileID: 1170449953}
   bottomLeft: {x: -16, y: -5, z: 0}
   topRight: {x: 3.5, y: 5.5, z: 0}
+  tileOffset: {x: 0.25, y: 0.25, z: 0}
 --- !u!1001 &3412127692938555331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4285,10 +4286,6 @@ PrefabInstance:
     - target: {fileID: 807423086667802659, guid: c3f9e22ed9278e54ababd0ac68cc5eae, type: 3}
       propertyPath: m_Name
       value: NEW Enemy_Patrol
-      objectReference: {fileID: 0}
-    - target: {fileID: 807423086667802659, guid: c3f9e22ed9278e54ababd0ac68cc5eae, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3f9e22ed9278e54ababd0ac68cc5eae, type: 3}
@@ -4347,10 +4344,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NEW Enemy_Scared
       objectReference: {fileID: 0}
-    - target: {fileID: 937779769341576063, guid: 3fd25b9b2ab065648a686e9ba481b0da, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd25b9b2ab065648a686e9ba481b0da, type: 3}
 --- !u!1001 &7703516919515576507
@@ -4363,10 +4356,6 @@ PrefabInstance:
     - target: {fileID: 7964001458139355596, guid: f5c466d35bc6bed408eb3b98449891e8, type: 3}
       propertyPath: m_Name
       value: NEW Enemy_Chase
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964001458139355596, guid: f5c466d35bc6bed408eb3b98449891e8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7964001458139355597, guid: f5c466d35bc6bed408eb3b98449891e8, type: 3}
       propertyPath: m_RootOrder

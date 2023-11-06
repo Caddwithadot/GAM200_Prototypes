@@ -33,6 +33,10 @@ public class EnemyFill : MonoBehaviour
 
     private bool filled = false;
 
+    private AudioSource audioSource;
+    public AudioClip burningSound;
+    public AudioClip deadSound;
+
     private void Start()
     {
         scriptsOnEnemy = enemy.GetComponents<MonoBehaviour>();
@@ -41,6 +45,7 @@ public class EnemyFill : MonoBehaviour
         rb = enemy.GetComponent<Rigidbody2D>();
         ps = GetComponent<ParticleSystem>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         startColor = sr.color;
         startSize = transform.localScale;
@@ -89,6 +94,11 @@ public class EnemyFill : MonoBehaviour
         transform.localScale = new Vector2(newSize, newSize);
 
         sr.color = Color.Lerp(currentColor, targetColor, stepScale);
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(burningSound, 0.5f);
+        }
         #endregion
 
         if (currentColor == targetColor)
@@ -98,6 +108,8 @@ public class EnemyFill : MonoBehaviour
             rb.gravityScale = 0.5f;
             GetComponent<BoxCollider2D>().enabled = false;
             playerTrigger.GetComponent<BoxCollider2D>().enabled = false;
+
+            audioSource.PlayOneShot(deadSound, 0.25f);
 
             foreach (var script in scriptsOnEnemy)
             {
