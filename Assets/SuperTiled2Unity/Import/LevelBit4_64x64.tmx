@@ -117,7 +117,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="9" name="Cable1" width="85" height="49">
+ <layer id="9" name="Cable1" width="85" height="49" opacity="0.15">
   <properties>
    <property name="unity:SortingOrder" value="11"/>
   </properties>
@@ -173,7 +173,7 @@
 0,0,0,407,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,410,406,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="12" name="Cable2" width="85" height="49">
+ <layer id="12" name="Cable2" width="85" height="49" opacity="0.15">
   <properties>
    <property name="unity:SortingOrder" value="11"/>
   </properties>
@@ -229,7 +229,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="13" name="Cable3" width="85" height="49">
+ <layer id="13" name="Cable3" width="85" height="49" opacity="0.15">
   <properties>
    <property name="unity:SortingOrder" value="11"/>
   </properties>
@@ -285,7 +285,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="14" name="Cable4" width="85" height="49">
+ <layer id="14" name="Cable4" width="85" height="49" opacity="0.15">
   <properties>
    <property name="unity:SortingOrder" value="11"/>
   </properties>
@@ -341,7 +341,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="15" name="Cable5" width="85" height="49">
+ <layer id="15" name="Cable5" width="85" height="49" opacity="0.15">
   <properties>
    <property name="unity:SortingOrder" value="11"/>
   </properties>
@@ -397,7 +397,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="16" name="Cable6" width="85" height="49">
+ <layer id="16" name="Cable6" width="85" height="49" opacity="0.15">
   <properties>
    <property name="unity:SortingOrder" value="11"/>
   </properties>
@@ -453,7 +453,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="17" name="Cable7" width="85" height="49">
+ <layer id="17" name="Cable7" width="85" height="49" opacity="0.15">
   <properties>
    <property name="unity:SortingOrder" value="11"/>
   </properties>
