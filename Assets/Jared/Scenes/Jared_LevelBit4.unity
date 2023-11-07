@@ -1430,6 +1430,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4953085826854313925, guid: 9637836ed563ba14d9353c5b110c0191, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5077665153976231732, guid: 9637836ed563ba14d9353c5b110c0191, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8976,7 +8980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475574561560585215, guid: 3159d854bfcc2de4fa6b25f708acfb01, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5475574561560585215, guid: 3159d854bfcc2de4fa6b25f708acfb01, type: 3}
       propertyPath: m_LocalScale.x
@@ -11324,7 +11328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32782de4293e1524f9cf0abbb47199d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAura: {fileID: 8254322376078146508}
   rayAura: {fileID: 8254322375796687435}
   health: 4
   invFrameCooldown: 1.5
