@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class LightTile : MonoBehaviour
 {
     private SpriteRenderer tile;
-    private List<SpriteRenderer> tiles = new List<SpriteRenderer>();
+    private List<SpriteRenderer> surroundingTiles = new List<SpriteRenderer>();
     private Vector2 overlapSize = new Vector2(1.0f, 1.0f);
     public LayerMask tileLayer;
 
@@ -21,7 +21,16 @@ public class LightTile : MonoBehaviour
     private void Start()
     {
         tile = GetComponent<SpriteRenderer>();
-        tiles.Add(tile);
+
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, overlapSize, 0.0f, tileLayer);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject != null && collider.gameObject.CompareTag("Tile"))
+            {
+                surroundingTiles.Add(collider.GetComponent<SpriteRenderer>());
+            }
+        }
     }
 
     private void Update()
@@ -40,11 +49,27 @@ public class LightTile : MonoBehaviour
     public void Light()
     {
         tile.color = new Color(0, 0, 0, lightAlpha);
+
+        foreach(SpriteRenderer otherTile in surroundingTiles)
+        {
+            if(otherTile.color.a != lightAlpha)
+            {
+                otherTile.color = new Color(0, 0, 0, 0.5f);
+            }
+        }
     }
 
     public void Dark()
     {
         tile.color = new Color(0, 0, 0, darkAlpha);
+
+        foreach (SpriteRenderer otherTile in surroundingTiles)
+        {
+            if (otherTile.color.a != darkAlpha)
+            {
+                otherTile.color = new Color(0, 0, 0, darkAlpha);
+            }
+        }
 
         checkLight = false;
     }
