@@ -22,6 +22,12 @@ public class EnemyPatrolWithChase : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 chaseStartPosition;
 
+    public AudioSource WalkingAS;
+    public AudioSource FollowingAS;
+    public AudioSource ChaserSFX;
+    public bool Barked = false;
+    public bool PlayFollowingAS = false;
+
     void Start()
     {
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
@@ -74,10 +80,31 @@ public class EnemyPatrolWithChase : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (PlayFollowingAS && ChaserSFX.isPlaying == false)
+        {
+            FollowingAS.enabled = true;
+        }
+        else
+        {
+            FollowingAS.enabled = false;
+        }
+    }
+
     private void FollowTarget()
     {
         if (targetToFollow != null)
         {
+            WalkingAS.enabled = false;
+            PlayFollowingAS = true;
+
+            if (!Barked)
+            {
+                ChaserSFX.enabled = true;
+                Barked = true;
+            }
+
             targetPosition = new Vector3(targetToFollow.position.x, transform.position.y, transform.position.z);
 
             // Use chaseSpeed while chasing
@@ -99,6 +126,11 @@ public class EnemyPatrolWithChase : MonoBehaviour
 
     private void ReturnToPatrol()
     {
+        WalkingAS.enabled = true;
+        PlayFollowingAS = false;
+        ChaserSFX.enabled = false;
+        Barked = false;
+
         float direction = Mathf.Sign(pointB.position.x - pointA.position.x);
 
         // Use patrolSpeed when returning to patrol

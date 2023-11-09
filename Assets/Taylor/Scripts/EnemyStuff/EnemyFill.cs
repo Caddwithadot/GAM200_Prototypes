@@ -36,6 +36,7 @@ public class EnemyFill : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip burningSound;
     public AudioClip deadSound;
+    public AudioSource SpecialBurningSFX;
 
     private void Start()
     {
@@ -144,6 +145,7 @@ public class EnemyFill : MonoBehaviour
         if (collision.tag == "ChargeLight" && mouseControls.kill)
         {
             StartFilling();
+            SpecialBurningSFX.enabled = true;
         }
 
         if (collision.tag == "Light" || collision.tag == "PlayerAura" || collision.tag == "ChargeLight")
@@ -157,6 +159,7 @@ public class EnemyFill : MonoBehaviour
         if (!mouseControls.kill || collision.tag == "ChargeLight")
         {
             StopFilling();
+            SpecialBurningSFX.enabled = false;
         }
 
         if (collision.tag == "Light" || collision.tag == "PlayerAura" || collision.tag == "ChargeLight")

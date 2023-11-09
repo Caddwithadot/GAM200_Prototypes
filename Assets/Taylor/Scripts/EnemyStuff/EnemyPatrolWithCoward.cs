@@ -22,6 +22,12 @@ public class EnemyPatrolWithCoward : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 chaseStartPosition;
 
+    public AudioSource WalkingAS;
+    public AudioSource EscapingAS;
+    public AudioSource CowardSFX;
+    public bool Yelped = false;
+    public bool PlayEscapingAS = false;
+
     void Start()
     {
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
@@ -73,10 +79,31 @@ public class EnemyPatrolWithCoward : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (PlayEscapingAS && CowardSFX.isPlaying == false)
+        {
+            EscapingAS.enabled = true;
+        }
+        else
+        {
+            EscapingAS.enabled = false;
+        }
+    }
+
     private void FollowTarget()
     {
         if (cowardPoint != null)
         {
+            WalkingAS.enabled = false;
+            PlayEscapingAS = true;
+
+            if (!Yelped)
+            {
+                CowardSFX.enabled = true;
+                Yelped = true;
+            }
+
             targetPosition = new Vector3(cowardPoint.position.x, transform.position.y, transform.position.z);
 
             // Use chaseSpeed while chasing
@@ -98,6 +125,11 @@ public class EnemyPatrolWithCoward : MonoBehaviour
 
     private void ReturnToPatrol()
     {
+        WalkingAS.enabled = true;
+        PlayEscapingAS = false;
+        CowardSFX.enabled = false;
+        Yelped = false;
+
         float direction = Mathf.Sign(pointB.position.x - pointA.position.x);
 
         // Use patrolSpeed when returning to patrol
