@@ -409,9 +409,9 @@ GameObject:
   - component: {fileID: 3289583275248695140}
   - component: {fileID: 3289583275248695141}
   - component: {fileID: 3289583275248695138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LampTrigger
-  m_TagString: Light
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Light: {fileID: 0}
   Door: {fileID: 0}
-  LitCableColor: {r: 0, g: 0, b: 0, a: 0}
+  LitCableColor: {r: 0.5019608, g: 1, b: 1, a: 1}
   Cable: {fileID: 0}
   MinScale: {x: 0, y: 0, z: 0}
   MaxScale: {x: 0.5, y: 0.5, z: 0}
@@ -864,7 +864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3289583275910365695}
   - component: {fileID: 3289583275910365694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
