@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         maxHealth = health;
-        animator = GetComponent<Animator>();
+        animator = transform.parent.GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -49,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             animator.enabled = false;
+            sr.enabled = true;
         }
 
         // lamp healing
@@ -77,7 +78,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            sr.color = Color.black;
+            sr.color = new Color(0.1f, 0.1f, 0.1f);
             rayAura.SetViewDistance(1f);
         }
     }

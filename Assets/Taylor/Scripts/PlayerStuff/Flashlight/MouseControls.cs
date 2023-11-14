@@ -8,6 +8,7 @@ public class MouseControls : MonoBehaviour
     [SerializeField] private RayLightNEW rayLight;
     [SerializeField] private SuperRayLight superLight;
     private Transform player;
+    private float playerX;
 
     public float interpolant = 20f;
 
@@ -21,6 +22,7 @@ public class MouseControls : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        playerX = player.localScale.x;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
@@ -42,11 +44,11 @@ public class MouseControls : MonoBehaviour
 
         if (transform.right.x > 0)
         {
-            player.transform.localScale = new Vector2(5, 5);
+            player.transform.localScale = new Vector2(playerX, playerX);
         }
         else if(transform.right.x < 0)
         {
-            player.transform.localScale = new Vector2(-5, 5);
+            player.transform.localScale = new Vector2(-playerX, playerX);
         }
 
         rayLight.SetAimDirection(transform.right);

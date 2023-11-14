@@ -19,15 +19,27 @@ public class PlayerMovementNEW : MonoBehaviour
     public AudioClip walkSound;
     public AudioClip jumpSound;
 
+    private Animator anim;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        if(horizontalInput != 0 && isGrounded)
+        {
+            anim.SetTrigger("Walk");
+        }
+        else if(horizontalInput == 0 && isGrounded)
+        {
+            anim.SetTrigger("Idle");
+        }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
