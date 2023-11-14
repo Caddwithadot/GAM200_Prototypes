@@ -30,12 +30,20 @@ public class PlayerHealth : MonoBehaviour
 
     public SceneHandler sceneHandler;
 
+    private PlayerMovementNEW moveScript;
+
+    private Rigidbody2D rb;
+
+    private float knockBackTimer = 0f;
+    public float knockTime;
+
     private void Start()
     {
         maxHealth = health;
         animator = transform.parent.GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        moveScript = GetComponent<PlayerMovementNEW>();
     }
 
     private void Update()
@@ -81,12 +89,28 @@ public class PlayerHealth : MonoBehaviour
             sr.color = new Color(0.1f, 0.1f, 0.1f);
             rayAura.SetViewDistance(1f);
         }
+
+        //knockback
+        if(knockBackTimer > 0)
+        {
+            knockBackTimer -= Time.deltaTime;
+
+            if(knockBackTimer <= 0)
+            {
+                moveScript.enabled = true;
+            }
+        }
     }
 
     public void TakeDamage(int lostHealth)
     {
         invTimer = invFrameCooldown;
         health -= lostHealth;
+
+        //
+        moveScript.enabled = false;
+
+        knockBackTimer = knockTime;
 
         if (health <= 0)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class RayLightStates : MonoBehaviour
@@ -51,8 +52,8 @@ public class RayLightStates : MonoBehaviour
     public Animator flickerAni;
     public MeshRenderer superMesh;
 
-    private float time;
-
+    private PlayerMovementNEW moveScript;
+    private float defaultSpeed;
 
     private void Start()
     {
@@ -64,6 +65,9 @@ public class RayLightStates : MonoBehaviour
 
         superRayLight.SetFOV(currentSuperAngle);
         superRayLight.SetViewDistance(endDist);
+
+        moveScript = FindObjectOfType<PlayerMovementNEW>();
+        defaultSpeed = moveScript.moveSpeed;
     }
 
     // Update is called once per frame
@@ -183,6 +187,9 @@ public class RayLightStates : MonoBehaviour
             isKilling = false;
         }
 
+        //
+        moveScript.moveSpeed = defaultSpeed / 3;
+
         superAudioSource.enabled = true;
         #region Overheat lerp
         float targetAngle = endAngle;
@@ -212,8 +219,6 @@ public class RayLightStates : MonoBehaviour
             otherSource.enabled = false;
         }
 
-        time += Time.deltaTime;
-
         //fully overheat
         if (currentSuperAngle == endAngle)
         {
@@ -238,6 +243,9 @@ public class RayLightStates : MonoBehaviour
             isKilling = true;
             audioSource.PlayOneShot(revertSound, 0.25f);
         }
+
+        //
+        moveScript.moveSpeed = defaultSpeed;
 
         superAudioSource.enabled = false;
         otherSource.enabled = false;

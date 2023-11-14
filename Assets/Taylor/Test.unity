@@ -810,6 +810,7 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: f12512daac605734c9202b1d4a04b668, type: 3}
   healSound: {fileID: 8300000, guid: 538aecbb10ced0843845f7f151bcdc3b, type: 3}
   sceneHandler: {fileID: 1328465353}
+  knockTime: 0
 --- !u!114 &723846313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6184,6 +6185,14 @@ PrefabInstance:
     - target: {fileID: 561545056038757206, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129024091337866660, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
+      propertyPath: knockTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129024091337866660, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
+      propertyPath: invFrameCooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9149372713067149654, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
       propertyPath: m_Name
