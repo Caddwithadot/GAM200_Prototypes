@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlaytestSceneTrigger : MonoBehaviour
 {
     private float timer = 0f;
-    private float PlayerStayTime = 0.25f;
+    private float PlayerStayTime = 0.15f;
     public bool PlayerIn;
 
     private void Update()
@@ -17,8 +17,7 @@ public class PlaytestSceneTrigger : MonoBehaviour
 
             if (timer >= PlayerStayTime)
             {
-                SceneManager.LoadScene(0);
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }

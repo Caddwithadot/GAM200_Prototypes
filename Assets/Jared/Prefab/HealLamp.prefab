@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6944037122841566384}
   - component: {fileID: 6944037122841566385}
   - component: {fileID: 6944037122841566386}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Aura
   m_Icon: {fileID: 0}
@@ -115,9 +115,9 @@ GameObject:
   - component: {fileID: 6944037123230789393}
   - component: {fileID: 6944037123230789394}
   - component: {fileID: 2819885975586112441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealLamp
-  m_TagString: Light
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

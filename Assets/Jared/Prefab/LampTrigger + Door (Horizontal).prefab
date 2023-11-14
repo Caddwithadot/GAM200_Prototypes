@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3289583274722837523}
   - component: {fileID: 3289583274722837520}
   - component: {fileID: 3289583274722837521}
+  - component: {fileID: 6145679148266053600}
   m_Layer: 3
   m_Name: DoorTile (3)
   m_TagString: Untagged
@@ -132,6 +133,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &6145679148266053600
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289583274722837551}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3289583274851058991
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3289583274851058990}
   - component: {fileID: 5565068622204054577}
+  - component: {fileID: 1783931353885536598}
   m_Layer: 3
   m_Name: Door
   m_TagString: Untagged
@@ -264,6 +287,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1783931353885536598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289583274851058991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9a02b771dd862489fe2f37256085c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3289583274907615329
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +311,7 @@ GameObject:
   - component: {fileID: 3289583274907615333}
   - component: {fileID: 3289583274907615330}
   - component: {fileID: 3289583274907615331}
+  - component: {fileID: 7645728753344740975}
   m_Layer: 3
   m_Name: DoorTile (2)
   m_TagString: Untagged
@@ -396,6 +432,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &7645728753344740975
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289583274907615329}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3289583275248695136
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,9 +564,10 @@ MonoBehaviour:
   LightDown: 1
   LightDownTimer: 0
   LightDownTime: 1
-  DoorOpenSFX: {fileID: 8300000, guid: 0e6a3615765cd0e4bac2bfd4e5d0131a, type: 3}
+  DoorOpenSFX: {fileID: 8300000, guid: 59b78c53199f0ef41876f21f32ac5999, type: 3}
   DoorParent: {fileID: 0}
-  SFXPlayed: 0
+  DoorSFXPlayed: 0
+  DoorCanOpen: 0
 --- !u!61 &3289583275248695141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -569,6 +627,7 @@ GameObject:
   - component: {fileID: 3289583275256700487}
   - component: {fileID: 3289583275256700484}
   - component: {fileID: 3289583275256700485}
+  - component: {fileID: 2889830603133963571}
   m_Layer: 3
   m_Name: DoorTile
   m_TagString: Untagged
@@ -689,6 +748,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &2889830603133963571
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289583275256700483}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3289583275603461223
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +814,7 @@ GameObject:
   - component: {fileID: 3289583275845833103}
   - component: {fileID: 3289583275845833100}
   - component: {fileID: 3289583275845833101}
+  - component: {fileID: 4446773699295622386}
   m_Layer: 3
   m_Name: DoorTile (1)
   m_TagString: Untagged
@@ -854,6 +935,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &4446773699295622386
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289583275845833099}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3289583275910365692
 GameObject:
   m_ObjectHideFlags: 0
