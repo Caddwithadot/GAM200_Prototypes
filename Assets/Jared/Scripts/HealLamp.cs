@@ -16,6 +16,12 @@ public class HealLamp : MonoBehaviour
     public AudioClip HealLampSFX;
     public bool SFXPlayed = false;
 
+    public AudioSource LampChargeAS;
+    public AudioSource HealingSFX;
+
+    private float LightUpTimer = 0f;
+    private float LightUpTime = 0.05f;
+
     void Start()
     {
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
@@ -44,11 +50,23 @@ public class HealLamp : MonoBehaviour
             FullyLit = true;
             FullyLitUp();
         }
+
+        LightUpTimer += Time.deltaTime;
+
+        if (Light.transform.localScale.x > MinScale.x && Light.transform.localScale.y > MinScale.y && Light.transform.localScale.x < MaxScale.x && Light.transform.localScale.y < MaxScale.y && LightUpTimer < LightUpTime)
+        {
+            LampChargeAS.enabled = true;
+        }
+        else
+        {
+            LampChargeAS.enabled = false;
+        }
     }
 
     public void LightUp()
     {
         Light.transform.localScale += ScaleIncrement;
+        LightUpTimer = 0f;
     }
 
     public void ClampLightScale()
@@ -80,6 +98,8 @@ public class HealLamp : MonoBehaviour
     {
         Light.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.7f, 0f, 0.4f);
         Light.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+
+        HealingSFX.enabled = true;
 
         if (SFXPlayed == false)
         {
