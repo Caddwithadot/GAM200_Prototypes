@@ -24,6 +24,8 @@ public class LampTrigger : MonoBehaviour
 
     private float LightDownTimer = 0f;
     public float LightDownTime = 1f;
+    private float LightUpTimer = 0f;
+    private float LightUpTime = 0.05f;
 
     public AudioSource LampAS;
     public AudioSource LampChargeAS;
@@ -37,8 +39,10 @@ public class LampTrigger : MonoBehaviour
 
         for (int i = 0; i < Door.transform.childCount; i++)
         {
-            Door.transform.GetChild(i).gameObject.layer = 7;
-            Door.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = LitColor;
+            GameObject Child = Door.transform.GetChild(i).gameObject;
+
+            Child.layer = 7;
+            Child.GetComponent<SpriteRenderer>().color = LitColor;
         }
     }
 
@@ -65,7 +69,9 @@ public class LampTrigger : MonoBehaviour
             FullyLitUp();
         }
 
-        if (Light.transform.localScale.x > MinScale.x && Light.transform.localScale.y > MinScale.y && Light.transform.localScale.x < MaxScale.x && Light.transform.localScale.y < MaxScale.y)
+        LightUpTimer += Time.deltaTime;
+
+        if (Light.transform.localScale.x > MinScale.x && Light.transform.localScale.y > MinScale.y && Light.transform.localScale.x < MaxScale.x && Light.transform.localScale.y < MaxScale.y && LightUpTimer < LightUpTime)
         {
             LampChargeAS.enabled = true;
         }
@@ -78,6 +84,7 @@ public class LampTrigger : MonoBehaviour
     public void LightUp()
     {
         Light.transform.localScale += ScaleIncrement;
+        LightUpTimer = 0f;
     }
 
     public void ClampLightScale()

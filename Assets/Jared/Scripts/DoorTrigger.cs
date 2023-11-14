@@ -11,7 +11,7 @@ public class DoorTrigger : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (Lamp.GetComponent<LampTrigger>().DoorCanOpen && collision.gameObject.tag == "Player")
         {
