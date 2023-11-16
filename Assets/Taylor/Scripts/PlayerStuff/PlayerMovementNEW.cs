@@ -14,6 +14,7 @@ public class PlayerMovementNEW : MonoBehaviour
     private float coyoteTimer = 0f;
     public float juffTime = 0.15f;
     private float juffTimer = 0f;
+    private bool jumped;
 
     private AudioSource audioSource;
     public AudioClip walkSound;
@@ -31,15 +32,10 @@ public class PlayerMovementNEW : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        if(horizontalInput != 0 && isGrounded)
-        {
-            anim.SetTrigger("Walk");
-        }
-        else if(horizontalInput == 0 && isGrounded)
-        {
-            anim.SetTrigger("Idle");
-        }
+        anim.SetInteger("MoveInput", (int) horizontalInput);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("jumped", jumped);
+        anim.SetInteger("yVel", (int) rb.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -71,6 +67,8 @@ public class PlayerMovementNEW : MonoBehaviour
             audioSource.PlayOneShot(jumpSound, 0.2f);
             coyoteTimer = 0f;
             juffTimer = 0f;
+
+            jumped = true;
         }
     }
 
@@ -90,6 +88,8 @@ public class PlayerMovementNEW : MonoBehaviour
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
+
+            jumped = false;
         }
     }
 
