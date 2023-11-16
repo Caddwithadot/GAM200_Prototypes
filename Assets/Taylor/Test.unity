@@ -4466,18 +4466,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9129024091337866660, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
-      propertyPath: knockTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129024091337866660, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
-      propertyPath: knockForce
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129024091337866660, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
-      propertyPath: invFrameCooldown
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 9149372713067149654, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
       propertyPath: m_Name
       value: NEW Player
