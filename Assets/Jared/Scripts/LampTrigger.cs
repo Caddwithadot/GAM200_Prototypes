@@ -42,7 +42,11 @@ public class LampTrigger : MonoBehaviour
             GameObject Child = Door.transform.GetChild(i).gameObject;
 
             Child.layer = 7;
-            Child.GetComponent<SpriteRenderer>().color = LitColor;
+
+            if (i != 0)
+            {
+                Child.GetComponent<SpriteRenderer>().color = LitColor;
+            }
         }
     }
 
@@ -130,8 +134,13 @@ public class LampTrigger : MonoBehaviour
     {
         for (int i = 0; i < Door.transform.childCount; i++)
         {
-            Door.transform.GetChild(i).GetComponent<Animator>().SetTrigger("DoorOpen");
+            if (i != 0)
+            {
+                Door.transform.GetChild(i).GetComponent<Animator>().SetTrigger("DoorOpen");
+            }
         }
+
+        Door.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
 
         if (DoorSFXPlayed == false)
         {

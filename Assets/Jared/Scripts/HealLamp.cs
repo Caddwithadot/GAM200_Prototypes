@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealLamp : MonoBehaviour
 {
     private MouseControls mouseControls;
+    private PlayerHealth PH;
     private Transform Light;
     public Vector3 MinScale = new Vector3(0f, 0f, 0f);
     public Vector3 MaxScale = new Vector3(1f, 1f, 0f);
@@ -15,6 +16,7 @@ public class HealLamp : MonoBehaviour
     public float LightDownTime = 1f;
     public AudioClip HealLampSFX;
     public bool SFXPlayed = false;
+    public bool PlayerHealthChecker = false;
 
     public AudioSource LampChargeAS;
     public AudioSource HealingSFX;
@@ -25,6 +27,7 @@ public class HealLamp : MonoBehaviour
     void Start()
     {
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
+        PH = FindObjectOfType<PlayerHealth>();
         Light = transform.GetChild(0);
     }
 
@@ -60,6 +63,18 @@ public class HealLamp : MonoBehaviour
         else
         {
             LampChargeAS.enabled = false;
+        }
+
+        if (PlayerHealthChecker)
+        {
+            if (PH.health == 4)
+            {
+                HealingSFX.enabled = false;
+            }
+            else
+            {
+                HealingSFX.enabled = true;
+            }
         }
     }
 
@@ -106,5 +121,7 @@ public class HealLamp : MonoBehaviour
             gameObject.GetComponent<AudioSource>().PlayOneShot(HealLampSFX);
             SFXPlayed = true;
         }
+
+        PlayerHealthChecker = true;
     }
 }

@@ -17,8 +17,6 @@ public class DoorParent : MonoBehaviour
     {
         if (collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
         {
-            Debug.Log("LIGHT");
-
             if (Lamp.DoorCanOpen)
             {
                 Lamp.OpenDoor();
