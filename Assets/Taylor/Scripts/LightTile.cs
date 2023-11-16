@@ -76,7 +76,7 @@ public class LightTile : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
+        if(collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura" || collision.tag == "Aura")
         {
             lightTime = lightDelay;
             Light();
@@ -85,7 +85,7 @@ public class LightTile : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura")
+        if (collision.tag == "Light" || collision.tag == "ChargeLight" || collision.tag == "PlayerAura" || collision.tag == "Aura")
         {
             checkLight = true;
         }
