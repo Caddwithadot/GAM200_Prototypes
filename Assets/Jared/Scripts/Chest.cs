@@ -28,7 +28,7 @@ public class Chest : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().sprite = OpenSprite;
             GetComponent<Animator>().SetTrigger("Chest_PickUp");
-            LittleGuyAS.PlayOneShot(LittleGuySFX);
+            LittleGuyAS.PlayOneShot(LittleGuySFX, 0.15f);
         }
 
         AudioSource.PlayOneShot(SFX);
