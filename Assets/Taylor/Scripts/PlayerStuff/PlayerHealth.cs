@@ -87,7 +87,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            sr.color = new Color(0.1f, 0.1f, 0.1f);
+            sr.color = new Color(0.3f, 0.3f, 0.3f);
             rayAura.SetViewDistance(1f);
         }
 

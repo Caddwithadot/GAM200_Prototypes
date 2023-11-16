@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class SceneHandler : MonoBehaviour
 {
     public GameObject playerParent;
+    public GameObject lightParent;
     private AudioSource audioSource;
     public AudioClip death;
+    public AudioListener cam;
 
     private bool isDead = false;
     private float deathTimer = 0f;
@@ -34,6 +36,9 @@ public class SceneHandler : MonoBehaviour
     public void PlayerDeathReload()
     {
         playerParent.SetActive(false);
+        lightParent.SetActive(false);
+        cam.enabled = true;
+        GetComponent<ParticleSystem>().Play();
         audioSource.PlayOneShot(death, 3);
 
         deathTimer = deathDelay;
