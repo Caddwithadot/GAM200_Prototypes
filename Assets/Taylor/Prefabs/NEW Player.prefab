@@ -797,13 +797,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayAura: {fileID: 9129024091822768790}
   health: 4
-  invFrameCooldown: 1.5
+  invFrameCooldown: 2
   passHealDelay: 5
   lampHealDelay: 1
   maxAuraScale: 6
   hitSound: {fileID: 8300000, guid: f12512daac605734c9202b1d4a04b668, type: 3}
   healSound: {fileID: 8300000, guid: 538aecbb10ced0843845f7f151bcdc3b, type: 3}
   sceneHandler: {fileID: 9129024091221261822}
+  knockTime: 0.5
 --- !u!81 &6315647986167882322
 AudioListener:
   m_ObjectHideFlags: 0

@@ -222,10 +222,15 @@ public class RayLightStates : MonoBehaviour
         //fully overheat
         if (currentSuperAngle == endAngle)
         {
-            if (playerHealth.health > 1)
+            if(playerHealth.health > 1)
             {
-                playerHealth.TakeDamage(1);
+                playerHealth.TakeDamage(1, null);
             }
+            else
+            {
+                playerHealth.TakeDamage(0, null);
+            }
+
             currentSuperAngle = 0;
             superRayLight.SetFOV(currentSuperAngle);
 

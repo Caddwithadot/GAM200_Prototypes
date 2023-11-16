@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private int maxHealth;
 
     private float invTimer = 0f;
-    public float invFrameCooldown = 3f;
+    public float invFrameCooldown = 2f;
 
     private bool isHealing = false;
     private float healTimer = 0f;
@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
     private Rigidbody2D rb;
 
     private float knockBackTimer = 0f;
-    public float knockTime;
+    public float knockTime = 0.5f;
 
     private void Start()
     {
@@ -44,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         moveScript = GetComponent<PlayerMovementNEW>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -102,15 +103,37 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int lostHealth)
+    public void TakeDamage(int lostHealth, Transform hazard)
     {
         invTimer = invFrameCooldown;
         health -= lostHealth;
-
-        //
         moveScript.enabled = false;
-
         knockBackTimer = knockTime;
+
+        if (hazard != null)
+        {
+            rb.velocity = Vector3.zero;
+            if (transform.position.x > hazard.position.x)
+            {
+                rb.AddForce(new Vector2(3, 7.5f), ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(new Vector2(-3, 7.5f), ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+            if (transform.localScale.x < 0)
+            {
+                rb.AddForce(new Vector2(2.5f, 5), ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(new Vector2(-2.5f, 5), ForceMode2D.Impulse);
+            }
+        }
 
         if (health <= 0)
         {
@@ -128,7 +151,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
             audioSource.PlayOneShot(hitSound, 3f);
-            TakeDamage(1);
+            TakeDamage(1, collision.gameObject.transform);
             healTimer = 0;
         }
     }
@@ -138,7 +161,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
         {
             audioSource.PlayOneShot(hitSound, 3f);
-            TakeDamage(1);
+            TakeDamage(1, collision.gameObject.transform);
             healTimer = 0;
         }
     }

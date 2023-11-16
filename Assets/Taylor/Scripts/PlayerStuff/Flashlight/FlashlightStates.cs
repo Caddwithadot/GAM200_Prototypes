@@ -204,7 +204,7 @@ public class FlashlightStates : MonoBehaviour
 
             if (useHealth)
             {
-                player.GetComponent<PlayerHealth>().TakeDamage(1);
+                player.GetComponent<PlayerHealth>().TakeDamage(1, null);
             }
         }
     }
