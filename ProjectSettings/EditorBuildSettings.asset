@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Jared/Scenes/TutTEST.unity
     guid: 087b39a55108f534cb5ca4470e41705f
   - enabled: 1
+    path: Assets/Jared/Scenes/Jared_LevelBit4.unity
+    guid: 644d3f5a67a662b418f264ea4b769161
+  - enabled: 1
     path: Assets/Jared/Scenes/VictoryScene.unity
     guid: cb90b06654a2a424e92605a1a459caf1
   m_configObjects: {}

@@ -130,7 +130,6 @@ public class LampTrigger : MonoBehaviour
     {
         for (int i = 0; i < Door.transform.childCount; i++)
         {
-            Door.transform.GetChild(i).GetComponent<BoxCollider2D>().enabled = false;
             Door.transform.GetChild(i).GetComponent<Animator>().SetTrigger("DoorOpen");
         }
 

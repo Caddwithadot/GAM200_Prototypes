@@ -11,6 +11,9 @@ public class Chest : MonoBehaviour
     public Sprite OpenSprite;
     private const float Score = 5f;
 
+    public AudioSource LittleGuyAS;
+    public AudioClip LittleGuySFX;
+
     void Start()
     {
         CC = FindObjectOfType<CoinCanvas>();
@@ -24,6 +27,8 @@ public class Chest : MonoBehaviour
         {
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().sprite = OpenSprite;
+            GetComponent<Animator>().SetTrigger("Chest_PickUp");
+            LittleGuyAS.PlayOneShot(LittleGuySFX);
         }
 
         AudioSource.PlayOneShot(SFX);
