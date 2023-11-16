@@ -20,6 +20,11 @@ public class PlaytestSceneTrigger : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
