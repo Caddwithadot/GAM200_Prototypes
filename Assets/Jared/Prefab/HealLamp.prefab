@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 103
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.7, b: 0, a: 0.2509804}
   m_FlipX: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   LightDownTime: 1
   HealLampSFX: {fileID: 8300000, guid: df5977883d1be8a49ab8013e3a76a92c, type: 3}
   SFXPlayed: 0
+  PlayerHealthChecker: 0
   LampChargeAS: {fileID: 4506429342306695290}
   HealingSFX: {fileID: 384252680876222468}
 --- !u!61 &6944037123230789393

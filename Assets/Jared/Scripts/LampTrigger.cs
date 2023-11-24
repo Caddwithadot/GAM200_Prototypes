@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -42,11 +43,6 @@ public class LampTrigger : MonoBehaviour
             GameObject Child = Door.transform.GetChild(i).gameObject;
 
             Child.layer = 7;
-
-            if (i != 0)
-            {
-                Child.GetComponent<SpriteRenderer>().color = LitColor;
-            }
         }
     }
 
@@ -137,6 +133,8 @@ public class LampTrigger : MonoBehaviour
             if (i != 0)
             {
                 Door.transform.GetChild(i).GetComponent<Animator>().SetTrigger("DoorOpen");
+
+                Door.transform.GetChild(i).GetComponent<SpriteRenderer>().color = LitColor;
             }
         }
 
