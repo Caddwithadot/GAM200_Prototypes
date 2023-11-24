@@ -8876,6 +8876,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1083594613, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 561545056038757206, guid: 852d6acf20b09454eafe3671ec0961ae, type: 3}
       propertyPath: m_RootOrder
       value: 4

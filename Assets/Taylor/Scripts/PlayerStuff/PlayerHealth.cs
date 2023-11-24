@@ -89,19 +89,19 @@ public class PlayerHealth : MonoBehaviour
         if (health != 1)
         {
             sr.color = new Color((auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale);
-            auraMaterial.color = new Color(1, 1, 0.589f, health * 0.125f);
+            auraMaterial.color = new Color(1, 1, 0.5f, health * 0.098f);
             rayAura.viewDistance = (auraScale + 1.5f) / 3;
             auraParticles.emissionRate = health * 35;
-            auraParticles.startSize = health * 0.025f;
+            //auraParticles.startSize = health * 0.025f;
             edgeParticles.startSize = health * 0.025f;
         }
         else
         {
             sr.color = new Color(0.3f, 0.3f, 0.3f);
-            auraMaterial.color = new Color(1, 1, 0.589f, 0f);
+            auraMaterial.color = new Color(1, 1, 0.5f, 0f);
             rayAura.viewDistance = 1;
             auraParticles.emissionRate = health * 35;
-            auraParticles.startSize = health * 0.025f;
+            //auraParticles.startSize = health * 0.025f;
             edgeParticles.startSize = health * 0.025f;
         }
 
