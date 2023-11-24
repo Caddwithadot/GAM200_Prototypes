@@ -932,6 +932,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &310309404 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8177227871617123354, guid: d1a269b6bcb504b4aa202b234ce095f1, type: 3}
+  m_PrefabInstance: {fileID: 1476344145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &316457119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3591808279954193635, guid: d1a269b6bcb504b4aa202b234ce095f1, type: 3}
@@ -1193,7 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rooms: []
-  Colliders: {fileID: 642515274}
+  Colliders: {fileID: 310309404}
   Hazards: {fileID: 329446859}
   JumpThroughs: {fileID: 316457119}
 --- !u!4 &447212171
@@ -1567,11 +1572,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 491405155325965508, guid: 4700c5d91c231c5469849bef29b1560f, type: 3}
   m_PrefabInstance: {fileID: 615266912}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &642515274 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8177227871617123354, guid: d1a269b6bcb504b4aa202b234ce095f1, type: 3}
-  m_PrefabInstance: {fileID: 1476344145}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &674511584
 GameObject:
@@ -3328,7 +3328,15 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6157039505783548844, guid: d1a269b6bcb504b4aa202b234ce095f1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -5818009532544129893, guid: d1a269b6bcb504b4aa202b234ce095f1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5716133280751118455, guid: d1a269b6bcb504b4aa202b234ce095f1, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}

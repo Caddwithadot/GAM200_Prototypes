@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < Hazards.childCount; i++)
         {
             Hazards.GetChild(i).gameObject.tag = "Enemy";
+            Hazards.GetChild(i).GetComponent<BoxCollider2D>().isTrigger = true;
         }
 
         for (int i = 0; i < JumpThroughs.childCount; i++)
