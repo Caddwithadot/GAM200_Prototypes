@@ -9,22 +9,32 @@ public class RayAura : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
     private float fov;
-    private float viewDistance;
+    public float viewDistance;
+    private float currentDistance;
     private Vector3 origin;
     private float startingAngle;
 
     private PolygonCollider2D polygonCollider;
+    public int layerOrder = 0;
+
+    public Transform followTarget;
 
     void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         fov = 363.5f;
-        viewDistance = 2.5f;
-        origin = Vector3.zero;
 
         //collider
         polygonCollider = GetComponent<PolygonCollider2D>();
+
+        currentDistance = viewDistance;
+        SetViewDistance(currentDistance);
+    }
+
+    private void Update()
+    {
+        SetOrigin(followTarget.position);
     }
 
     private void LateUpdate()
@@ -95,6 +105,14 @@ public class RayAura : MonoBehaviour
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
+
+        GetComponent<MeshRenderer>().sortingOrder = layerOrder;
+
+        if(viewDistance != currentDistance)
+        {
+            currentDistance = viewDistance;
+            SetViewDistance(currentDistance);
+        }
     }
 
     public static Vector3 GetVectorFromAngle(float angle)

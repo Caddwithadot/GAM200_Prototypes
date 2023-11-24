@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer sr;
 
     public RayAura rayAura;
+    public Material auraMaterial;
 
     public int health = 4;
     private int maxHealth;
@@ -37,6 +38,11 @@ public class PlayerHealth : MonoBehaviour
     private float knockBackTimer = 0f;
     public float knockTime = 0.5f;
 
+    public ParticleSystem auraParticles;
+    public ParticleSystem edgeParticles;
+    public Animator auraAnim;
+    public MeshRenderer auraMesh;
+
     private void Start()
     {
         maxHealth = health;
@@ -54,11 +60,14 @@ public class PlayerHealth : MonoBehaviour
             invTimer -= Time.deltaTime;
 
             animator.enabled = true;
+            auraAnim.enabled = true;
         }
         else
         {
             animator.enabled = false;
+            auraAnim.enabled = false;
             sr.enabled = true;
+            auraMesh.enabled = true;
         }
 
         // lamp healing
@@ -77,18 +86,23 @@ public class PlayerHealth : MonoBehaviour
         float auraDifference = maxAuraScale / maxHealth;
         float auraScale = health * auraDifference;
 
-        // Update rayAura and playerAura
-        rayAura.SetOrigin(transform.position);
-
         if (health != 1)
         {
             sr.color = new Color((auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale, (auraScale - 0.15f) / maxAuraScale);
-            rayAura.SetViewDistance((auraScale + 1.5f) / 3);
+            auraMaterial.color = new Color(1, 1, 0.589f, health * 0.125f);
+            rayAura.viewDistance = (auraScale + 1.5f) / 3;
+            auraParticles.emissionRate = health * 35;
+            auraParticles.startSize = health * 0.025f;
+            edgeParticles.startSize = health * 0.025f;
         }
         else
         {
             sr.color = new Color(0.3f, 0.3f, 0.3f);
-            rayAura.SetViewDistance(1f);
+            auraMaterial.color = new Color(1, 1, 0.589f, 0f);
+            rayAura.viewDistance = 1;
+            auraParticles.emissionRate = health * 35;
+            auraParticles.startSize = health * 0.025f;
+            edgeParticles.startSize = health * 0.025f;
         }
 
         //knockback

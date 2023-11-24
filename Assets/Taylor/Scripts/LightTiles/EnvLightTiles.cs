@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TileTest : MonoBehaviour
+public class EnvLightTiles : MonoBehaviour
 {
     public GameObject LightTilePrefab;
     public Transform TileParent;
@@ -41,5 +41,7 @@ public class TileTest : MonoBehaviour
                 Instantiate(LightTilePrefab, worldPosition, Quaternion.identity, TileParent);
             }
         }
+
+
     }
 }
