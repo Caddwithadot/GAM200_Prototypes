@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
 
             if (healTimer >= lampHealDelay)
             {
-                audioSource.PlayOneShot(healSound, 0.25f);
+                audioSource.PlayOneShot(healSound, 1f);
                 health++;
                 healTimer = 0f;
             }
