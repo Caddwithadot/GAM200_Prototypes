@@ -82,7 +82,7 @@ public class RayLightStates : MonoBehaviour
             FocusLight();
         }
 
-        if (mouseControls.kill && unfocusCooldownTime <= 0)
+        if (mouseControls.kill && unfocusCooldownTime <= 0 && !finishedOverheating)
         {
             OverheatLight();
         }
@@ -235,7 +235,7 @@ public class RayLightStates : MonoBehaviour
             superRayLight.SetFOV(currentSuperAngle);
 
             audioSource.PlayOneShot(overheat, 2f);
-
+            GetComponent<OverheatParticles>().EmitParticlesFromPolygon();
             
             finishedOverheating = true;
         }

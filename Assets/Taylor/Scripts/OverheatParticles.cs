@@ -6,6 +6,8 @@ public class OverheatParticles : MonoBehaviour
     public PolygonCollider2D polygonCollider;
     public ParticleSystem particleSystem;
 
+    public int numberOfParticlesToEmit = 5;
+
     void Start()
     {
         if (polygonCollider == null || particleSystem == null)
@@ -17,21 +19,20 @@ public class OverheatParticles : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             EmitParticlesFromPolygon();
         }
     }
 
-    void EmitParticlesFromPolygon()
+    public void EmitParticlesFromPolygon()
     {
         Vector2[] points = polygonCollider.GetPath(0); // Assuming only one path in the collider
 
         ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
 
         // Adjust the following values based on your requirements
-        int numberOfParticlesToEmit = 5;
-        float particleLifetime = 2f;
+        
 
         for (int i = 0; i < numberOfParticlesToEmit; i++)
         {

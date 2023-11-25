@@ -39,12 +39,19 @@ public class ParticleTest : MonoBehaviour
 
         ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
 
-        foreach (Vector2 point in points)
+        int numOfPoints = points.Length;
+
+        for (int i = 0; i < numOfPoints; i++)
         {
-            if(point.y > playerOffset + 0.001f || point.y < playerOffset - 0.001f)
+            Vector2 point = points[i];
+
+            if(i != 0)
             {
-                emitParams.position = new Vector3(point.x, point.y, 0f);
-                particleSystem.Emit(emitParams, 1);
+                if (point.y > playerOffset + 0.001f || point.y < playerOffset - 0.001f)
+                {
+                    emitParams.position = new Vector3(point.x, point.y, 0f);
+                    particleSystem.Emit(emitParams, 1);
+                }
             }
         }
     }
