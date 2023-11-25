@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -34,5 +35,6 @@ public class Chest : MonoBehaviour
         AudioSource.PlayOneShot(SFX);
 
         CC.CoinScore += 5f;
+        CC.ChestCharlesPanel.GetComponent<Animator>().SetTrigger("ChestUI");
     }
 }

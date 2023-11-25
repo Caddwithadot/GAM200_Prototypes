@@ -7,6 +7,7 @@ public class CoinCanvas : MonoBehaviour
 {
     public GameObject CoinCounter;
     public float CoinScore = 0f;
+    public GameObject ChestCharlesPanel;
 
     public void Update()
     {
