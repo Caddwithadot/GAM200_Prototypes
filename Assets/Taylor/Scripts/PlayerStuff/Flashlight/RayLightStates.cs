@@ -20,10 +20,6 @@ public class RayLightStates : MonoBehaviour
 
     private float currentSuperAngle = 0f;
 
-    public Material flashLightMat;
-    public Color defaultColor;
-    public Color superChargeColor;
-
     private AudioSource audioSource;
     public AudioSource otherSource;
     public AudioSource superAudioSource;
@@ -55,6 +51,9 @@ public class RayLightStates : MonoBehaviour
     private PlayerMovementNEW moveScript;
     private float defaultSpeed;
 
+    public Material lightMaterial;
+    private Color startColor;
+
     private void Start()
     {
         rayLight = GetComponent<RayLightNEW>();
@@ -68,6 +67,8 @@ public class RayLightStates : MonoBehaviour
 
         moveScript = FindObjectOfType<PlayerMovementNEW>();
         defaultSpeed = moveScript.moveSpeed;
+
+        startColor = lightMaterial.color;
     }
 
     // Update is called once per frame
@@ -141,6 +142,7 @@ public class RayLightStates : MonoBehaviour
         if (currentDist == startDist && currentAngle == startAngle)
         {
             finishedUnfocusing = true;
+            lightMaterial.color = startColor;
         }
     }
 
@@ -235,8 +237,10 @@ public class RayLightStates : MonoBehaviour
             superRayLight.SetFOV(currentSuperAngle);
 
             audioSource.PlayOneShot(overheat, 2f);
+
             GetComponent<OverheatParticles>().EmitParticlesFromPolygon();
-            
+            lightMaterial.color = new Color(1, 1, 1, 0);
+
             finishedOverheating = true;
         }
     }

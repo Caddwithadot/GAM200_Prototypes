@@ -19,11 +19,15 @@ public class MouseControls : MonoBehaviour
     public bool checkEnemies = false;
     private GameObject[] enemies;
 
+    private ParticleSystem ps;
+    public bool useParticles;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         playerX = player.localScale.x;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        ps = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -61,11 +65,25 @@ public class MouseControls : MonoBehaviour
             if (Input.GetMouseButton(1))
             {
                 focus = true;
+
+                if (useParticles)
+                {
+                    ps.startLifetime = 1.5f;
+                    var partShape = ps.shape;
+                    partShape.angle = 2;
+                }
             }
 
             if (Input.GetMouseButtonUp(1))
             {
                 focus = false;
+
+                if (useParticles)
+                {
+                    ps.startLifetime = 1;
+                    var partShape = ps.shape;
+                    partShape.angle = 20;
+                }
             }
 
             if (Input.GetMouseButton(0) && focus)

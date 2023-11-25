@@ -1,20 +1,35 @@
 using System.Collections;
 using UnityEngine;
 
-public class OverheatParticles : MonoBehaviour
+public class RayAmbientParticles : MonoBehaviour
 {
     public PolygonCollider2D polygonCollider;
-    public ParticleSystem particleSystem;
+    public ParticleSystem ps;
 
-    public int numberOfParticlesToEmit = 5;
+    public int numberOfParticlesToEmit = 100;
+
+    private Transform player;
+    public float particleSpeed = 5f;
 
     void Start()
     {
-        if (polygonCollider == null || particleSystem == null)
+        player = GameObject.FindWithTag("Player").transform;
+
+        if (polygonCollider == null || ps == null)
         {
             polygonCollider = GetComponent<PolygonCollider2D>();
-            particleSystem = GetComponent<ParticleSystem>();
+            ps = GetComponent<ParticleSystem>();
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EmitParticlesFromPolygon();
+        }
+
+        EmitParticlesFromPolygon();
     }
 
     public void EmitParticlesFromPolygon()
@@ -23,19 +38,22 @@ public class OverheatParticles : MonoBehaviour
 
         ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
 
-        // Adjust the following values based on your requirements
-        
-
         for (int i = 0; i < numberOfParticlesToEmit; i++)
         {
             // Get a random point within the polygon collider
             Vector2 randomPoint = GetRandomPointInPolygon(points);
 
+            // Calculate the direction from the player to the random point
+            Vector2 direction = (randomPoint - (Vector2)player.position).normalized;
+
             // Set the particle position
             emitParams.position = new Vector3(randomPoint.x, randomPoint.y, 0f);
 
+            // Set the particle velocity to move in the opposite direction of the player
+            emitParams.velocity = direction * particleSpeed;
+
             // Emit the particle with the specified lifetime
-            particleSystem.Emit(emitParams, 1);
+            ps.Emit(emitParams, 1);
         }
     }
 

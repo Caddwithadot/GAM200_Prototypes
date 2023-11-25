@@ -92,7 +92,6 @@ public class PlayerHealth : MonoBehaviour
             auraMaterial.color = new Color(1, 1, 0.5f, health * 0.098f);
             rayAura.viewDistance = (auraScale + 1.5f) / 3;
             auraParticles.emissionRate = health * 35;
-            //auraParticles.startSize = health * 0.025f;
             edgeParticles.startSize = health * 0.025f;
         }
         else
@@ -101,7 +100,6 @@ public class PlayerHealth : MonoBehaviour
             auraMaterial.color = new Color(1, 1, 0.5f, 0f);
             rayAura.viewDistance = 1;
             auraParticles.emissionRate = health * 35;
-            //auraParticles.startSize = health * 0.025f;
             edgeParticles.startSize = health * 0.025f;
         }
 

@@ -6,7 +6,7 @@ using static UnityEngine.ParticleSystem;
 public class ParticleTest : MonoBehaviour
 {
     public PolygonCollider2D polygonCollider;
-    public ParticleSystem particleSystem;
+    public ParticleSystem ps;
 
     public Transform player;
     public float offset = -0.28f;
@@ -19,10 +19,10 @@ public class ParticleTest : MonoBehaviour
             player = GameObject.FindWithTag("Player").transform;
         }
 
-        if (polygonCollider == null || particleSystem == null)
+        if (polygonCollider == null || ps == null)
         {
             polygonCollider = GetComponent<PolygonCollider2D>();
-            particleSystem = GetComponent<ParticleSystem>();
+            ps = GetComponent<ParticleSystem>();
         }
     }
 
@@ -50,7 +50,7 @@ public class ParticleTest : MonoBehaviour
                 if (point.y > playerOffset + 0.001f || point.y < playerOffset - 0.001f)
                 {
                     emitParams.position = new Vector3(point.x, point.y, 0f);
-                    particleSystem.Emit(emitParams, 1);
+                    ps.Emit(emitParams, 1);
                 }
             }
         }
