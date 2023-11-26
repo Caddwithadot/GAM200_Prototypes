@@ -146,7 +146,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="3" name="Cable1" width="61" height="39">
+ <layer id="3" name="Cable1" width="61" height="39" opacity="0.3">
   <properties>
    <property name="unity:SortingOrder" value="101"/>
   </properties>
