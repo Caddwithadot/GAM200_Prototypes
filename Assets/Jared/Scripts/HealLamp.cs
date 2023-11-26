@@ -24,6 +24,9 @@ public class HealLamp : MonoBehaviour
     private float LightUpTimer = 0f;
     private float LightUpTime = 0.05f;
 
+    public GameObject auraParticles;
+    public GameObject healParticles;
+
     void Start()
     {
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
@@ -113,6 +116,8 @@ public class HealLamp : MonoBehaviour
     {
         Light.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.7f, 0f, 0.4f);
         Light.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        auraParticles.SetActive(true);
+        healParticles.SetActive(true);
 
         HealingSFX.enabled = true;
 
@@ -123,5 +128,15 @@ public class HealLamp : MonoBehaviour
         }
 
         PlayerHealthChecker = true;
+    }
+
+    public void HealParticlesPlay()
+    {
+        healParticles.GetComponent<ParticleSystem>().Play();
+    }
+
+    public void HealParticlesStop()
+    {
+        healParticles.GetComponent<ParticleSystem>().Stop();
     }
 }

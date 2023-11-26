@@ -34,6 +34,9 @@ public class LampTrigger : MonoBehaviour
     public AudioClip LampSFX;
     public AudioClip DoorSFX;
 
+    public GameObject auraParticles;
+    public CircleCollider2D cc;
+
     void Start()
     {
         mouseControls = GameObject.Find("MouseControls").GetComponent<MouseControls>();
@@ -116,6 +119,8 @@ public class LampTrigger : MonoBehaviour
     {
         Light.gameObject.GetComponent<SpriteRenderer>().color = LightColor;
         Cable.color = LitColor;
+        auraParticles.SetActive(true);
+        cc.enabled = true;
 
         if (!LampSFXPlayed)
         {

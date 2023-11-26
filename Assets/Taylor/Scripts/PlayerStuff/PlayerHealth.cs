@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -158,6 +159,15 @@ public class PlayerHealth : MonoBehaviour
         if (collision.CompareTag("Aura"))
         {
             isHealing = true;
+
+            if(health != maxHealth)
+            {
+                collision.transform.parent.GetComponent<HealLamp>().HealParticlesPlay();
+            }
+            else
+            {
+                collision.transform.parent.GetComponent<HealLamp>().HealParticlesStop();
+            }
         }
 
         if (collision.gameObject.tag == ("Enemy") && invTimer <= 0)
@@ -176,12 +186,18 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(1, collision.gameObject.transform);
             healTimer = 0;
         }
+
+        if (collision.CompareTag("Aura") && health == maxHealth)
+        {
+            collision.transform.parent.GetComponent<HealLamp>().HealParticlesStop();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Aura"))
         {
+            collision.transform.parent.GetComponent<HealLamp>().HealParticlesStop();
             isHealing = false;
             healTimer = 0f;
         }

@@ -52,7 +52,10 @@ public class RayLightStates : MonoBehaviour
     private float defaultSpeed;
 
     public Material lightMaterial;
-    private Color startColor;
+
+    private float returnTime = 0;
+    public float returnCooldown = 1f;
+    private Animator returnLight;
 
     private void Start()
     {
@@ -68,7 +71,7 @@ public class RayLightStates : MonoBehaviour
         moveScript = FindObjectOfType<PlayerMovementNEW>();
         defaultSpeed = moveScript.moveSpeed;
 
-        startColor = lightMaterial.color;
+        returnLight = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -100,6 +103,17 @@ public class RayLightStates : MonoBehaviour
         if (isFocused && focusCooldownTime > 0)
         {
             focusCooldownTime -= Time.deltaTime;
+        }
+
+        if(returnTime > 0)
+        {
+            returnTime -= Time.deltaTime;
+
+            if(returnTime <= 0)
+            {
+                GetComponent<PolygonCollider2D>().enabled = true;
+                finishedOverheating = false;
+            }
         }
     }
 
@@ -142,7 +156,7 @@ public class RayLightStates : MonoBehaviour
         if (currentDist == startDist && currentAngle == startAngle)
         {
             finishedUnfocusing = true;
-            lightMaterial.color = startColor;
+            //lightMaterial.color = startColor;
         }
     }
 
@@ -239,7 +253,9 @@ public class RayLightStates : MonoBehaviour
             audioSource.PlayOneShot(overheat, 2f);
 
             GetComponent<OverheatParticles>().EmitParticlesFromPolygon();
-            lightMaterial.color = new Color(1, 1, 1, 0);
+            GetComponent<PolygonCollider2D>().enabled = false;
+            returnLight.SetTrigger("Off");
+            returnTime = returnCooldown;
 
             finishedOverheating = true;
         }
